@@ -10,7 +10,7 @@ describe("find(callbackfn, iterable)", () => {
     expect(() => find((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
   });
   
-  it("returns asynchronously when for async ITERABLE even when they also have a sync iterator symbol", () => {
+  it("returns asynchronously when for async ITERABLE even when they also have a sync iterator symbol", async () => {
     const iterable = {
       async *[Symbol.asyncIterator]() {
         yield 1;
@@ -24,9 +24,9 @@ describe("find(callbackfn, iterable)", () => {
       }
     }
 
-    const syncOverrideNotPromise = find(x => x > 2, iterable);
-    expect(syncOverrideNotPromise).not.toBeInstanceOf(Promise);
-    expect(syncOverrideNotPromise).toEqual(3);
+    const syncOverridenPromise = find(x => x > 2, iterable);
+    expect(syncOverridenPromise).toBeInstanceOf(Promise);
+    expect(await syncOverridenPromise).toEqual(3);
 
   })
 

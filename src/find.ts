@@ -3,9 +3,9 @@ import type { Promisable } from "./types.js";
 /**
  * `find(predicate, iterable)` returns the first `value` in `ITERABLE` that 
  * satisfies `PREDICATE(x)` or **throws** if that `value` can't be found.
- *
- * @throws RangeError
- *
+ * 
+ * @throws a {@link RangeError} when `PREDICATE` fails to find a value 
+ * 
  * ### Usage
  * ```ts
  * const todos = await fetch('https://dummyjson.com/todos')
@@ -14,16 +14,32 @@ import type { Promisable } from "./types.js";
  * const firstCompleted = find((todo): todo is { id: number; completed: true } => todo.completed, todos);
  * console.log(firstCompleted.completed); // true
  * ```
- *
+ * 
  * ### Async
- *
+ * 
  * If `ITERABLE` has an {@link Symbol.asyncIterator} property,
  * then `find` searches for it using the `for await` expression,
- * regardless of whether or not it also has the sync symbol (though
- * in practice this will *never* happen).
+ * and returns a {@lihnk Promise}, regardless of whether or not it 
+ * also has the sync symbol (though in practice this will *never* happen).
+ * 
+ * ```
+ * async function* count(n: number) {
+ *   for (let i = 0; i < n; i++) {
+ *     yield i + 1;
+ *   }
+ * }
+ * 
+ * const firstOdd = await find(x => x % 2 === 1, count);
+ * console.log(firstOdd) // 1
+ * ```
+ * 
+ * There is no overload to handle async `PREDICATE`. If you return
+ * a Promise in `PREDICATE`, then the very iterable element will
+ * evaluate out to `true` (since a Promise is an object which is truthy),
+ * so don't do that and take out the async work from the loop.
  * 
  * ### Examples
- *
+ * 
  * @example
  * It returns the first value that satisfies `CALLBACKFN`
  * ```ts
@@ -34,6 +50,47 @@ import type { Promisable } from "./types.js";
  * It throws when no value satisfies `CALLBACKFN`
  * ```ts
  * expect(() => find((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
+ * ```
+ * 
+ * @example
+ * It returns asynchronously when for async ITERABLE even when they also have a sync iterator symbol
+ * ```ts
+ * const iterable = {
+ *   async *[Symbol.asyncIterator]() {
+ *     yield 1;
+ *     yield 2;
+ *     yield 3;
+ *   },
+ *   *[Symbol.iterator]() {
+ *     yield 1;
+ *     yield 2;
+ *     yield 3;
+ *   }
+ * }
+ * 
+ * const syncOverridenPromise = find(x => x > 2, iterable);
+ * expect(syncOverridenPromise).toBeInstanceOf(Promise);
+ * expect(await syncOverridenPromise).toEqual(3);
+ * ```
+ * 
+ * @example
+ * It only returns a Promise when ITERABLE is an async iterable
+ * ```ts
+ * const iterable = {
+ *   async *[Symbol.asyncIterator]() {
+ *     yield 1;
+ *     yield 2;
+ *     yield 3;
+ *   }
+ * }
+ * 
+ * const promise = find(x => x > 2, iterable);
+ * expect(promise).toBeInstanceOf(Promise);
+ * expect(await promise).toEqual(3);
+ * 
+ * // no await on async functions it just checks for truthiness immediately
+ * const notPromise = find(async x => x > 2, [1, 2, 3]);
+ * expect(notPromise).toEqual(1);
  * ```
  */
 export function find<T, S extends T>(
