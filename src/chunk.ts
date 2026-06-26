@@ -21,6 +21,12 @@
  *     .execute()
  * }
  * ```
+ *
+ * ### Helpers
+ * You can the following helper properties attached to the `chunk` function:
+ *
+ * chunk
+ * └── chunk.async
  * 
  * ### Examples
  * 
@@ -63,6 +69,34 @@ export function* chunk<T>(
   let chunks: T[] = [];
 
   for (const x of iterable) {
+    chunks.push(x);
+
+    if (chunks.length >= limit) {
+      yield chunks;
+      chunks = [];
+    }
+  }
+
+  if (chunks.length > 0) {
+    yield chunks;
+  }
+}
+
+/**
+ * `chunk.async(limit, iterable)` is a new **async** generator that yields elements of `ITERABLE` materialized as arrays of max size `LIMIT`.
+ */
+chunk.async = async function* chunkAsync<T>(
+  limit: number,
+  iterable: AsyncIterable<T, unknown, unknown>
+): AsyncGenerator<T[], void, unknown> {
+  if (limit <= 0) {
+    throw new RangeError("chunk LIMIT must be greater than 0", {
+      cause: limit,
+    });
+  }
+  let chunks: T[] = [];
+
+  for await (const x of iterable) {
     chunks.push(x);
 
     if (chunks.length >= limit) {

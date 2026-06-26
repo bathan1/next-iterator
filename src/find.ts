@@ -1,6 +1,7 @@
 
 /**
- * `find(predicate, iterable)` returns the first `value` in `ITERABLE` that satisfies `PREDICATE(x)` or **throws** a {@link RangeError} if that `value` can't be found.
+ * `find(predicate, iterable)` returns the first `value` in `ITERABLE` that satisfies `PREDICATE(x)` or
+ * **throws** a {@link RangeError} if that `value` can't be found.
  * 
  * ### Installation
  * ```bash

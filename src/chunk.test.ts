@@ -26,4 +26,24 @@ describe("chunk(limit, iterable)", () => {
     const chunked = () => Array.from(chunk(limit, iterable));
     expect(chunked).toThrow(RangeError);
   });
+
+  it("chunks async iterables", async () => {
+    async function* count(n: number) {
+      for (let i = 0; i < n; i++) {
+        yield i + 1;
+      }
+    }
+
+    const limit = 2;
+    const iterable = count(10);
+
+    const chunked = await Array.fromAsync(chunk.async(limit, iterable));
+    expect(chunked).toEqual([
+      [1, 2],
+      [3, 4],
+      [5, 6],
+      [7, 8],
+      [9, 10]
+    ]);
+  });
 });
