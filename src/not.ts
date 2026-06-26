@@ -1,6 +1,6 @@
 /**
  * A `falsy` value is any of the 6 value js considers 'false'
- * i.e. `!FALSY` evaluates to `true`
+ * i.e. `!FALSY` evaluates to `true`.
  */
 type Falsy = false | 0 | 0n | null | undefined | "";
 
