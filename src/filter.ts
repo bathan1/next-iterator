@@ -1,5 +1,3 @@
-import type { Promisable } from "./types.js";
-
 /**
  * `filter(predicate, iterable)` lazily yields the values in `ITERABLE` that satisfy `PREDICATE`.
  *
