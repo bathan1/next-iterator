@@ -139,6 +139,22 @@
       ]
     },
     {
+      "name": "first.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/first.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/first.ts"
+        },
+        {
+          "path": "./src/types.ts",
+          "type": "registry:lib",
+          "target": "@lib/utop/types.ts"
+        }
+      ]
+    },
+    {
       "name": "flat.js",
       "type": "registry:lib",
       "files": [

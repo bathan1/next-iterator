@@ -30,3 +30,8 @@ export type Promisable<T> =
 export type Either<L, R> =
   | { kind: "left"; value: L }
   | { kind: "right"; value: R };
+
+export type Prettify<A> = {
+  [Key in keyof A]: A[Key];
+} & {};
+export type Merge<A, B> = Prettify<Omit<A, keyof B> & B>;
