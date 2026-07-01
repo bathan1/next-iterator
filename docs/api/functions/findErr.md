@@ -86,7 +86,7 @@ await expect(findErr((value) => value > 2, values())).rejects.toThrow(RangeError
 
 > **findErr**\<`T`, `S`\>(`predicate`, `iterable`): `Promise`\<`S`\>
 
-Defined in: [findErr.ts:76](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/findErr.ts#L76)
+Defined in: [findErr.ts:76](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/findErr.ts#L76)
 
 #### Type Parameters
 
@@ -116,7 +116,7 @@ Defined in: [findErr.ts:76](https://github.com/bathan1/utop.js/blob/125dbb4fad39
 
 > **findErr**\<`T`\>(`predicate`, `iterable`): `Promise`\<`T`\>
 
-Defined in: [findErr.ts:80](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/findErr.ts#L80)
+Defined in: [findErr.ts:80](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/findErr.ts#L80)
 
 #### Type Parameters
 
@@ -142,7 +142,7 @@ Defined in: [findErr.ts:80](https://github.com/bathan1/utop.js/blob/125dbb4fad39
 
 > **findErr**\<`T`, `S`\>(`predicate`, `iterable`): `S`
 
-Defined in: [findErr.ts:84](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/findErr.ts#L84)
+Defined in: [findErr.ts:84](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/findErr.ts#L84)
 
 #### Type Parameters
 
@@ -172,7 +172,7 @@ Defined in: [findErr.ts:84](https://github.com/bathan1/utop.js/blob/125dbb4fad39
 
 > **findErr**\<`T`\>(`predicate`, `iterable`): `T`
 
-Defined in: [findErr.ts:88](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/findErr.ts#L88)
+Defined in: [findErr.ts:88](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/findErr.ts#L88)
 
 #### Type Parameters
 

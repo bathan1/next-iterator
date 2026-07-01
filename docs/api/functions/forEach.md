@@ -69,7 +69,7 @@ expect(logAsync).toHaveBeenCalledWith(3, 2);
 
 > **forEach**\<`T`\>(`callbackfn`, `iterable`): `Promise`\<`void`\>
 
-Defined in: [forEach.ts:56](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/forEach.ts#L56)
+Defined in: [forEach.ts:56](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/forEach.ts#L56)
 
 #### Type Parameters
 
@@ -95,7 +95,7 @@ Defined in: [forEach.ts:56](https://github.com/bathan1/utop.js/blob/125dbb4fad39
 
 > **forEach**\<`T`\>(`callbackfn`, `iterable`): `void`
 
-Defined in: [forEach.ts:60](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/forEach.ts#L60)
+Defined in: [forEach.ts:60](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/forEach.ts#L60)
 
 #### Type Parameters
 

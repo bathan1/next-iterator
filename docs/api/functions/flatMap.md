@@ -48,7 +48,7 @@ expect(await Array.fromAsync(result)).toEqual([1, 10, 2, 20]);
 
 > **flatMap**\<`T`, `U`\>(`callbackfn`, `iterable`): `Generator`\<`U`, `void`, `unknown`\>
 
-Defined in: [flatMap.ts:35](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/flatMap.ts#L35)
+Defined in: [flatMap.ts:35](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/flatMap.ts#L35)
 
 #### Type Parameters
 
@@ -78,7 +78,7 @@ Defined in: [flatMap.ts:35](https://github.com/bathan1/utop.js/blob/125dbb4fad39
 
 > **flatMap**\<`T`, `U`\>(`callbackfn`, `iterable`): `AsyncGenerator`\<`Awaited`\<`U`\>, `void`, `unknown`\>
 
-Defined in: [flatMap.ts:39](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/flatMap.ts#L39)
+Defined in: [flatMap.ts:39](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/flatMap.ts#L39)
 
 #### Type Parameters
 

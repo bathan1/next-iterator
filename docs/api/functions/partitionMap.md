@@ -92,7 +92,7 @@ expect(asyncResult).toEqual(syncResult);
 
 > **partitionMap**\<`T`, `L`, `R`\>(`callbackfn`, `iterable`): `Promise`\<\[`L`[], `R`[]\]\>
 
-Defined in: [partitionMap.ts:79](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/partitionMap.ts#L79)
+Defined in: [partitionMap.ts:79](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/partitionMap.ts#L79)
 
 #### Type Parameters
 
@@ -126,7 +126,7 @@ Defined in: [partitionMap.ts:79](https://github.com/bathan1/utop.js/blob/125dbb4
 
 > **partitionMap**\<`T`, `L`, `R`\>(`callbackfn`, `iterable`): \[`L`[], `R`[]\]
 
-Defined in: [partitionMap.ts:83](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/partitionMap.ts#L83)
+Defined in: [partitionMap.ts:83](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/partitionMap.ts#L83)
 
 #### Type Parameters
 

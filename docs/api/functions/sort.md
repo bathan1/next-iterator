@@ -37,7 +37,7 @@ expect(source).toEqual([3, 1, 2]);
 
 > **sort**\<`T`\>(`compareFn`, `iterable`): `T`[]
 
-Defined in: [sort.ts:25](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/sort.ts#L25)
+Defined in: [sort.ts:25](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/sort.ts#L25)
 
 ### Type Parameters
 

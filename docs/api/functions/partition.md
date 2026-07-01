@@ -46,7 +46,7 @@ expect(partition((value) => value % 2 === 0, [1, 2, 3, 4])).toEqual([
 
 > **partition**\<`T`, `S`\>(`predicate`, `iterable`): `Promise`\<\[`S`[], `Exclude`\<`T`, `S`\>[]\]\>
 
-Defined in: [partition.ts:36](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/partition.ts#L36)
+Defined in: [partition.ts:36](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/partition.ts#L36)
 
 #### Type Parameters
 
@@ -76,7 +76,7 @@ Defined in: [partition.ts:36](https://github.com/bathan1/utop.js/blob/125dbb4fad
 
 > **partition**\<`T`\>(`predicate`, `iterable`): \[`T`[], `T`[]\]
 
-Defined in: [partition.ts:40](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/partition.ts#L40)
+Defined in: [partition.ts:40](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/partition.ts#L40)
 
 #### Type Parameters
 
@@ -102,7 +102,7 @@ Defined in: [partition.ts:40](https://github.com/bathan1/utop.js/blob/125dbb4fad
 
 > **partition**\<`T`, `S`\>(`predicate`, `iterable`): \[`S`[], `Exclude`\<`T`, `S`\>[]\]
 
-Defined in: [partition.ts:44](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/partition.ts#L44)
+Defined in: [partition.ts:44](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/partition.ts#L44)
 
 #### Type Parameters
 
@@ -132,7 +132,7 @@ Defined in: [partition.ts:44](https://github.com/bathan1/utop.js/blob/125dbb4fad
 
 > **partition**\<`T`\>(`predicate`, `iterable`): \[`T`[], `T`[]\]
 
-Defined in: [partition.ts:48](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/partition.ts#L48)
+Defined in: [partition.ts:48](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/partition.ts#L48)
 
 #### Type Parameters
 

@@ -40,7 +40,7 @@ expect(findMap(() => undefined, [1, 2, 3])).toBeUndefined();
 
 > **findMap**\<`T`, `U`\>(`callbackfn`, `iterable`): [`Option`](../type-aliases/Option.md)\<`U`\>
 
-Defined in: [findMap.ts:29](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/findMap.ts#L29)
+Defined in: [findMap.ts:29](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/findMap.ts#L29)
 
 ### Type Parameters
 

@@ -77,7 +77,7 @@ expect(result).toEqual(["0:2", "1:4", "2:6"]);
 
 > **reduce**\<`T`, `U`\>(`callbackfn`, `initialValue`, `iterable`): `Promise`\<`Awaited`\<`U`\>\>
 
-Defined in: [reduce.ts:65](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/reduce.ts#L65)
+Defined in: [reduce.ts:65](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/reduce.ts#L65)
 
 #### Type Parameters
 
@@ -111,7 +111,7 @@ Defined in: [reduce.ts:65](https://github.com/bathan1/utop.js/blob/125dbb4fad39d
 
 > **reduce**\<`T`, `U`\>(`callbackfn`, `initialValue`, `iterable`): `U`
 
-Defined in: [reduce.ts:70](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/reduce.ts#L70)
+Defined in: [reduce.ts:70](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/reduce.ts#L70)
 
 #### Type Parameters
 

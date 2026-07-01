@@ -6,7 +6,7 @@ title: Merge
 
 > **Merge**\<`A`, `B`\> = [`Prettify`](Prettify.md)\<`Omit`\<`A`, keyof `B`\> & `B`\>
 
-Defined in: [types.ts:85](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/types.ts#L85)
+Defined in: [types.ts:85](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/types.ts#L85)
 
 ## Type Parameters
 

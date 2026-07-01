@@ -105,4 +105,4 @@ expect(syncResult).toEqual([2, 4, 6]);
 
 > `const` **map**: `Map`
 
-Defined in: [map.ts:117](https://github.com/bathan1/utop.js/blob/125dbb4fad39d300a5134b78adea5914856f4dcf/src/map.ts#L117)
+Defined in: [map.ts:117](https://github.com/bathan1/utop.js/blob/94e39a8d2ef5a05d48ea2a9901012d95a93e96b9/src/map.ts#L117)
