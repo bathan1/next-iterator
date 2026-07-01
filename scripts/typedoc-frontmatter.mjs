@@ -6,11 +6,8 @@ const registry = JSON.parse(readFileSync(new URL("../registry.json", import.meta
 const repository = new URL(registry.homepage).pathname.replace(/^\/|\/$/g, "");
 const registryItems = new Map(
   registry.items
-    .filter(
-      (item) =>
-        item.type === "registry:lib" && item.name.endsWith(".js") && item.name !== "types.js"
-    )
-    .map((item) => [item.name.replace(/\.js$/, ""), item])
+    .filter((item) => item.type === "registry:lib" && item.name !== "types")
+    .map((item) => [item.name, item])
 );
 const pages = new Map();
 
@@ -24,17 +21,27 @@ function readDocComment(reflection) {
   const match = beforeDeclaration.match(/\/\*\*[\s\S]*?\*\//g)?.at(-1);
   if (!match) return;
 
-  return match
+  const body = match
     .replace(/^\/\*\*\s?\n?/, "")
     .replace(/\n?\s*\*\/\s*$/, "")
     .split("\n")
     .map((line) => line.replace(/^\s*\* ?/, ""))
-    .filter((line) => !line.startsWith("@example"))
     .join("\n")
     .trim()
     .replace(/\{@link\s+([^}|]+?)(?:\s*\|\s*([^}]+))?\}/g, (_, target, label) =>
       (label ?? target).trim()
     );
+  const exampleIndex = body.search(/^@example\b/m);
+
+  if (exampleIndex === -1) return { content: body, examples: "" };
+
+  return {
+    content: body.slice(0, exampleIndex).trimEnd(),
+    examples: body
+      .slice(exampleIndex)
+      .replace(/^@example[ \t]*\n?/gm, "")
+      .trim(),
+  };
 }
 
 function firstParagraph(markdown) {
@@ -60,33 +67,6 @@ function functionIndex() {
     .join("\n");
 
   return `# API Reference\n\n## Functions\n\n${items}`;
-}
-
-function importPath(name, item) {
-  const source =
-    item.files.find((file) => file.path.replace(/^.*\//, "").replace(/\.tsx?$/, "") === name) ??
-    item.files[0];
-
-  return source.target.replace(/^@lib(?=\/)/, "@/lib").replace(/\.tsx?$/, "");
-}
-
-function addUsage(markdown, name, item) {
-  const usage = [
-    "## Usage",
-    "",
-    "```ts",
-    `import { ${name} } from "${importPath(name, item)}";`,
-    "```",
-    "",
-    "",
-  ].join("\n");
-  const heading = /^## Usage[ \t]*\n?/m;
-
-  if (heading.test(markdown)) return markdown.replace(heading, usage);
-
-  const firstHeading = markdown.search(/^## /m);
-  if (firstHeading === -1) return `${markdown}\n\n${usage.trim()}`;
-  return `${markdown.slice(0, firstHeading)}${usage}${markdown.slice(firstHeading)}`.trim();
 }
 
 function addInstallation(markdown, itemName) {
@@ -117,9 +97,9 @@ export function load(app) {
       if (!item) continue;
 
       const doc = readDocComment(reflection);
-      if (!doc) continue;
+      if (!doc?.content) continue;
 
-      pages.set(reflection.id, { doc, item });
+      pages.set(reflection.id, { ...doc, item });
       reflection.comment = undefined;
       for (const signature of reflection.signatures ?? []) {
         signature.comment = undefined;
@@ -130,7 +110,7 @@ export function load(app) {
   app.renderer.on(MarkdownPageEvent.BEGIN, (page) => {
     const generatedPage = pages.get(page.model?.id);
     const summary = generatedPage
-      ? firstParagraph(generatedPage.doc)
+      ? firstParagraph(generatedPage.content)
       : page.model?.comment?.summary?.map((part) => part.text).join("").split("\n\n")[0]?.trim();
 
     page.frontmatter = {
@@ -158,12 +138,13 @@ export function load(app) {
     if (!generatedPage) return;
 
     const { frontmatter, body } = splitFrontmatter(page.contents);
-    const content = addInstallation(
-      addUsage(generatedPage.doc, page.model.name, generatedPage.item),
-      generatedPage.item.name
-    );
+    const content = addInstallation(generatedPage.content, generatedPage.item.name);
+    const examples = generatedPage.examples
+      ? `\n\n## Examples\n\n${generatedPage.examples}`
+      : "";
     const reference = nestHeadings(removePageTitle(body));
+    const title = generatedPage.item.name.toLowerCase();
 
-    page.contents = `${frontmatter}${content}\n\n## API Reference\n\n${reference}\n`;
+    page.contents = `${frontmatter}# ${title}\n\n${content}${examples}\n\n## API Reference\n\n${reference}\n`;
   });
 }

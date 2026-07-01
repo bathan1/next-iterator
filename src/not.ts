@@ -37,8 +37,6 @@ type Predicate<T, S extends T = T> = ((value: T) => boolean) | ((value: T) => va
  *
  * There is no async sugar for the `not` function.
  *
- * ## Examples
- *
  * @example
  * It returns `true` for falsy values
  * ```ts

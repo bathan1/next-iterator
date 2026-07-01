@@ -1,272 +1,153 @@
 ---
 title: not
+description: not(value) negates VALUE; not(predicate, value) negates PREDICATE(VALUE).
 ---
 
-# Function: not()
+# not
 
-## Call Signature
+`not(value)` negates `VALUE`; `not(predicate, value)` negates `PREDICATE(VALUE)`.
+
+This is a rare case of a function where the number of arguments determines how
+the function evaluates them, as opposed to the usual case where omitting arguments
+simply indicates the absence of that value in Utop.js.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/not
+```
+
+## Usage
+```ts
+const response = await fetch("http://localhost:3000");
+if (not(response.ok)) {
+  throw new Error("")
+}
+```
+
+Although you can use `not` as a "readable" `!` operator like the above does against a single `VALUE`,
+the main benefit of `not` is its ability to infer the excluded type that `PREDICATE` asserts.
+
+```ts
+const isString = (val: string | number) => typeof val === "string";
+const x = Math.random() < 0.5 ? "1" : 1;
+
+if (not(isString, x)) {
+  console.log("number!", x);
+} else {
+  console.log("string!", x);
+}
+```
+
+There is no async sugar for the `not` function.
+
+## Examples
+
+It returns `true` for falsy values
+```ts
+expect(not(null)).toBe(true);
+expect(not(undefined)).toBe(true);
+expect(not(false)).toBe(true);
+expect(not(0)).toBe(true);
+expect(not(0n)).toBe(true);
+expect(not("")).toBe(true);
+```
+
+It returns `false` for truthy values
+```ts
+expect(not(true)).toBe(false);
+expect(not(1)).toBe(false);
+expect(not("hello")).toBe(false);
+expect(not([])).toBe(false);
+expect(not([1])).toBe(false);
+expect(not({})).toBe(false);
+```
+
+It accepts predicate functions
+```ts
+const isEven = (x: 1 | 2 | 3 | 4): x is 2 | 4 => x % 2 === 0;
+const xs = [1, 2, 3, 4] as const;
+
+const odds = xs.filter((x) => not(isEven, x));
+expect(odds).toEqual([1, 3]);
+```
+
+## API Reference
+
+### Call Signature
 
 > **not**\<`T`\>(`value`): `value is Extract<T, Falsy>`
 
-Defined in: [not.ts:74](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/not.ts#L74)
+Defined in: [not.ts:72](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/not.ts#L72)
 
-`not(value)` negates `VALUE`; `not(predicate, value)` negates `PREDICATE(VALUE)`.
+#### Type Parameters
 
-This is a rare case of a function where the number of arguments determines how
-the function evaluates them, as opposed to the usual case where omitting arguments
-simply indicates the absence of that value in Utop.js.
-
-## Usage
-```ts
-const response = await fetch("http://localhost:3000");
-if (not(response.ok)) {
-  throw new Error("")
-}
-```
-
-Although you can use `not` as a "readable" `!` operator like the above does against a single `VALUE`,
-the main benefit of `not` is its ability to infer the excluded type that `PREDICATE` asserts.
-
-```ts
-const isString = (val: string | number) => typeof val === "string";
-const x = Math.random() < 0.5 ? "1" : 1;
-
-if (not(isString, x)) {
-  console.log("number!", x);
-} else {
-  console.log("string!", x);
-}
-```
-
-There is no async sugar for the `not` function.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### value
+##### value
 
 `T`
 
-### Returns
+#### Returns
 
 `value is Extract<T, Falsy>`
 
-### Examples
-
-It returns `true` for falsy values
-```ts
-expect(not(null)).toBe(true);
-expect(not(undefined)).toBe(true);
-expect(not(false)).toBe(true);
-expect(not(0)).toBe(true);
-expect(not(0n)).toBe(true);
-expect(not("")).toBe(true);
-```
-
-It returns `false` for truthy values
-```ts
-expect(not(true)).toBe(false);
-expect(not(1)).toBe(false);
-expect(not("hello")).toBe(false);
-expect(not([])).toBe(false);
-expect(not([1])).toBe(false);
-expect(not({})).toBe(false);
-```
-
-It accepts predicate functions
-```ts
-const isEven = (x: 1 | 2 | 3 | 4): x is 2 | 4 => x % 2 === 0;
-const xs = [1, 2, 3, 4] as const;
-
-const odds = xs.filter((x) => not(isEven, x));
-expect(odds).toEqual([1, 3]);
-```
-
-## Call Signature
+### Call Signature
 
 > **not**\<`T`, `S`\>(`predicate`, `value`): `value is Exclude<T, S>`
 
-Defined in: [not.ts:75](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/not.ts#L75)
+Defined in: [not.ts:73](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/not.ts#L73)
 
-`not(value)` negates `VALUE`; `not(predicate, value)` negates `PREDICATE(VALUE)`.
+#### Type Parameters
 
-This is a rare case of a function where the number of arguments determines how
-the function evaluates them, as opposed to the usual case where omitting arguments
-simply indicates the absence of that value in Utop.js.
-
-## Usage
-```ts
-const response = await fetch("http://localhost:3000");
-if (not(response.ok)) {
-  throw new Error("")
-}
-```
-
-Although you can use `not` as a "readable" `!` operator like the above does against a single `VALUE`,
-the main benefit of `not` is its ability to infer the excluded type that `PREDICATE` asserts.
-
-```ts
-const isString = (val: string | number) => typeof val === "string";
-const x = Math.random() < 0.5 ? "1" : 1;
-
-if (not(isString, x)) {
-  console.log("number!", x);
-} else {
-  console.log("string!", x);
-}
-```
-
-There is no async sugar for the `not` function.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`) => `value is S`
 
-#### value
+##### value
 
 `T`
 
-### Returns
+#### Returns
 
 `value is Exclude<T, S>`
 
-### Examples
-
-It returns `true` for falsy values
-```ts
-expect(not(null)).toBe(true);
-expect(not(undefined)).toBe(true);
-expect(not(false)).toBe(true);
-expect(not(0)).toBe(true);
-expect(not(0n)).toBe(true);
-expect(not("")).toBe(true);
-```
-
-It returns `false` for truthy values
-```ts
-expect(not(true)).toBe(false);
-expect(not(1)).toBe(false);
-expect(not("hello")).toBe(false);
-expect(not([])).toBe(false);
-expect(not([1])).toBe(false);
-expect(not({})).toBe(false);
-```
-
-It accepts predicate functions
-```ts
-const isEven = (x: 1 | 2 | 3 | 4): x is 2 | 4 => x % 2 === 0;
-const xs = [1, 2, 3, 4] as const;
-
-const odds = xs.filter((x) => not(isEven, x));
-expect(odds).toEqual([1, 3]);
-```
-
-## Call Signature
+### Call Signature
 
 > **not**\<`T`\>(`predicate`, `value`): `boolean`
 
-Defined in: [not.ts:79](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/not.ts#L79)
+Defined in: [not.ts:77](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/not.ts#L77)
 
-`not(value)` negates `VALUE`; `not(predicate, value)` negates `PREDICATE(VALUE)`.
+#### Type Parameters
 
-This is a rare case of a function where the number of arguments determines how
-the function evaluates them, as opposed to the usual case where omitting arguments
-simply indicates the absence of that value in Utop.js.
-
-## Usage
-```ts
-const response = await fetch("http://localhost:3000");
-if (not(response.ok)) {
-  throw new Error("")
-}
-```
-
-Although you can use `not` as a "readable" `!` operator like the above does against a single `VALUE`,
-the main benefit of `not` is its ability to infer the excluded type that `PREDICATE` asserts.
-
-```ts
-const isString = (val: string | number) => typeof val === "string";
-const x = Math.random() < 0.5 ? "1" : 1;
-
-if (not(isString, x)) {
-  console.log("number!", x);
-} else {
-  console.log("string!", x);
-}
-```
-
-There is no async sugar for the `not` function.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`) => `unknown`
 
-#### value
+##### value
 
 `T`
 
-### Returns
+#### Returns
 
 `boolean`
-
-### Examples
-
-It returns `true` for falsy values
-```ts
-expect(not(null)).toBe(true);
-expect(not(undefined)).toBe(true);
-expect(not(false)).toBe(true);
-expect(not(0)).toBe(true);
-expect(not(0n)).toBe(true);
-expect(not("")).toBe(true);
-```
-
-It returns `false` for truthy values
-```ts
-expect(not(true)).toBe(false);
-expect(not(1)).toBe(false);
-expect(not("hello")).toBe(false);
-expect(not([])).toBe(false);
-expect(not([1])).toBe(false);
-expect(not({})).toBe(false);
-```
-
-It accepts predicate functions
-```ts
-const isEven = (x: 1 | 2 | 3 | 4): x is 2 | 4 => x % 2 === 0;
-const xs = [1, 2, 3, 4] as const;
-
-const odds = xs.filter((x) => not(isEven, x));
-expect(odds).toEqual([1, 3]);
-```

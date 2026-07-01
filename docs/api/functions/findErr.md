@@ -1,393 +1,195 @@
 ---
 title: findErr
+description: |-
+  findErr(predicate, iterable) returns the first value in ITERABLE matching PREDICATE or throws
+  RangeError if no such value is found.
 ---
 
-# Function: findErr()
+# finderr
 
-## Call Signature
+`findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
+RangeError if no such value is found.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/findErr
+```
+
+## Usage
+```ts
+const firstOpen = findErr((todo) => !todo.done, todos);
+```
+
+`findErr` does not await `PREDICATE`; async behavior is only provided for async iterables.
+
+## Examples
+
+It returns the first value that satisfies `CALLBACKFN`
+```ts
+expect(findErr((x) => x > 2, [1, 2, 3, 4])).toBe(3);
+```
+
+It throws when no value satisfies `CALLBACKFN`
+```ts
+expect(() => findErr((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
+```
+
+It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
+```ts
+const iterable = {
+  async *[Symbol.asyncIterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+  *[Symbol.iterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+
+const syncOverridenPromise = findErr((x) => x > 2, iterable);
+expect(syncOverridenPromise).toBeInstanceOf(Promise);
+expect(await syncOverridenPromise).toEqual(3);
+```
+
+It returns asynchronously for async ITERABLE
+```ts
+const iterable = {
+  async *[Symbol.asyncIterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+
+const promise = findErr((x) => x > 2, iterable);
+expect(promise).toBeInstanceOf(Promise);
+expect(await promise).toEqual(3);
+```
+
+It throws asynchronously when no async value satisfies `CALLBACKFN`
+```ts
+async function* values() {
+  yield 1;
+  yield 2;
+}
+
+await expect(findErr((value) => value > 2, values())).rejects.toThrow(RangeError);
+```
+
+## API Reference
+
+### Call Signature
 
 > **findErr**\<`T`, `S`\>(`predicate`, `iterable`): `Promise`\<`S`\>
 
-Defined in: [findErr.ts:78](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/findErr.ts#L78)
+Defined in: [findErr.ts:76](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/findErr.ts#L76)
 
-`findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
-RangeError if no such value is found.
+#### Type Parameters
 
-## Usage
-```ts
-const firstOpen = findErr((todo) => !todo.done, todos);
-```
-
-`findErr` does not await `PREDICATE`; async behavior is only provided for async iterables.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `value is S`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<`S`\>
 
-### Examples
-
-It returns the first value that satisfies `CALLBACKFN`
-```ts
-expect(findErr((x) => x > 2, [1, 2, 3, 4])).toBe(3);
-```
-
-It throws when no value satisfies `CALLBACKFN`
-```ts
-expect(() => findErr((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
-```
-
-It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-  *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const syncOverridenPromise = findErr((x) => x > 2, iterable);
-expect(syncOverridenPromise).toBeInstanceOf(Promise);
-expect(await syncOverridenPromise).toEqual(3);
-```
-
-It returns asynchronously for async ITERABLE
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const promise = findErr((x) => x > 2, iterable);
-expect(promise).toBeInstanceOf(Promise);
-expect(await promise).toEqual(3);
-```
-
-It throws asynchronously when no async value satisfies `CALLBACKFN`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-await expect(findErr((value) => value > 2, values())).rejects.toThrow(RangeError);
-```
-
-## Call Signature
+### Call Signature
 
 > **findErr**\<`T`\>(`predicate`, `iterable`): `Promise`\<`T`\>
 
-Defined in: [findErr.ts:82](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/findErr.ts#L82)
+Defined in: [findErr.ts:80](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/findErr.ts#L80)
 
-`findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
-RangeError if no such value is found.
+#### Type Parameters
 
-## Usage
-```ts
-const firstOpen = findErr((todo) => !todo.done, todos);
-```
-
-`findErr` does not await `PREDICATE`; async behavior is only provided for async iterables.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<`T`\>
 
-### Examples
-
-It returns the first value that satisfies `CALLBACKFN`
-```ts
-expect(findErr((x) => x > 2, [1, 2, 3, 4])).toBe(3);
-```
-
-It throws when no value satisfies `CALLBACKFN`
-```ts
-expect(() => findErr((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
-```
-
-It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-  *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const syncOverridenPromise = findErr((x) => x > 2, iterable);
-expect(syncOverridenPromise).toBeInstanceOf(Promise);
-expect(await syncOverridenPromise).toEqual(3);
-```
-
-It returns asynchronously for async ITERABLE
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const promise = findErr((x) => x > 2, iterable);
-expect(promise).toBeInstanceOf(Promise);
-expect(await promise).toEqual(3);
-```
-
-It throws asynchronously when no async value satisfies `CALLBACKFN`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-await expect(findErr((value) => value > 2, values())).rejects.toThrow(RangeError);
-```
-
-## Call Signature
+### Call Signature
 
 > **findErr**\<`T`, `S`\>(`predicate`, `iterable`): `S`
 
-Defined in: [findErr.ts:86](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/findErr.ts#L86)
+Defined in: [findErr.ts:84](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/findErr.ts#L84)
 
-`findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
-RangeError if no such value is found.
+#### Type Parameters
 
-## Usage
-```ts
-const firstOpen = findErr((todo) => !todo.done, todos);
-```
-
-`findErr` does not await `PREDICATE`; async behavior is only provided for async iterables.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `value is S`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `S`
 
-### Examples
-
-It returns the first value that satisfies `CALLBACKFN`
-```ts
-expect(findErr((x) => x > 2, [1, 2, 3, 4])).toBe(3);
-```
-
-It throws when no value satisfies `CALLBACKFN`
-```ts
-expect(() => findErr((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
-```
-
-It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-  *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const syncOverridenPromise = findErr((x) => x > 2, iterable);
-expect(syncOverridenPromise).toBeInstanceOf(Promise);
-expect(await syncOverridenPromise).toEqual(3);
-```
-
-It returns asynchronously for async ITERABLE
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const promise = findErr((x) => x > 2, iterable);
-expect(promise).toBeInstanceOf(Promise);
-expect(await promise).toEqual(3);
-```
-
-It throws asynchronously when no async value satisfies `CALLBACKFN`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-await expect(findErr((value) => value > 2, values())).rejects.toThrow(RangeError);
-```
-
-## Call Signature
+### Call Signature
 
 > **findErr**\<`T`\>(`predicate`, `iterable`): `T`
 
-Defined in: [findErr.ts:90](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/findErr.ts#L90)
+Defined in: [findErr.ts:88](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/findErr.ts#L88)
 
-`findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
-RangeError if no such value is found.
+#### Type Parameters
 
-## Usage
-```ts
-const firstOpen = findErr((todo) => !todo.done, todos);
-```
-
-`findErr` does not await `PREDICATE`; async behavior is only provided for async iterables.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `T`
-
-### Examples
-
-It returns the first value that satisfies `CALLBACKFN`
-```ts
-expect(findErr((x) => x > 2, [1, 2, 3, 4])).toBe(3);
-```
-
-It throws when no value satisfies `CALLBACKFN`
-```ts
-expect(() => findErr((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
-```
-
-It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-  *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const syncOverridenPromise = findErr((x) => x > 2, iterable);
-expect(syncOverridenPromise).toBeInstanceOf(Promise);
-expect(await syncOverridenPromise).toEqual(3);
-```
-
-It returns asynchronously for async ITERABLE
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const promise = findErr((x) => x > 2, iterable);
-expect(promise).toBeInstanceOf(Promise);
-expect(await promise).toEqual(3);
-```
-
-It throws asynchronously when no async value satisfies `CALLBACKFN`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-await expect(findErr((value) => value > 2, values())).rejects.toThrow(RangeError);
-```

@@ -26,8 +26,6 @@ import type { Promisable } from "./types.js";
  * console.log(numBytes);
  * ```
  *
- * ## Examples
- *
  * @example
  * It folds `ITERABLE` into `INITIAL_VALUE`
  * ```ts

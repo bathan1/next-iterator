@@ -14,8 +14,6 @@ import { map } from "./map.js";
  * const csv = join(",", await Array.fromAsync(values()));
  * ```
  *
- * ## Examples
- *
  * @example
  * It joins transformed values with the separator
  * ```ts

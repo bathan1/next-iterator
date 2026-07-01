@@ -14,8 +14,6 @@ import { None, type Option } from "./types.js";
  * const parsed = findMap(Number, await Array.fromAsync(messages()));
  * ```
  *
- * ## Examples
- *
  * @example
  * It returns the first defined callback result
  * ```ts

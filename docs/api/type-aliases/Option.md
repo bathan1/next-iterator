@@ -7,7 +7,7 @@ description: "`Option<T>` is `T` unioned with `undefined`"
 
 > **Option**\<`T`\> = `T` \| `undefined`
 
-Defined in: [types.ts:16](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/types.ts#L16)
+Defined in: [types.ts:16](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/types.ts#L16)
 
 `Option<T>` is `T` unioned with `undefined`
 

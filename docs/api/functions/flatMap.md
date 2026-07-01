@@ -1,131 +1,105 @@
 ---
 title: flatMap
+description: flatMap(callbackfn, iterable) lazily yields every value from each iterable returned by CALLBACKFN for ITERABLE.
 ---
 
-# Function: flatMap()
+# flatmap
 
-## Call Signature
+`flatMap(callbackfn, iterable)` lazily yields every value from each iterable returned by `CALLBACKFN` for `ITERABLE`.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/flatMap
+```
+
+## Usage
+```ts
+const words = [...flatMap((line) => line.split(" "), lines)];
+```
+
+For an async `ITERABLE`, `flatMap` returns an AsyncGenerator, awaits `CALLBACKFN`,
+and accepts either an iterable or async iterable from it.
+
+```ts
+const words = await Array.fromAsync(flatMap(async (line) => (await line).split(" "), lines()));
+```
+
+## Examples
+
+It lazily flattens each callback result
+```ts
+expect([...flatMap((value) => [value, value * 2], [1, 2, 3])]).toEqual([1, 2, 2, 4, 3, 6]);
+```
+
+It awaits async callbacks and flattens async results for async `ITERABLE`
+```ts
+async function* values() {
+  yield 1;
+  yield 2;
+}
+const result = flatMap(async (value) => new Set([value, value * 10]), values());
+expect(await Array.fromAsync(result)).toEqual([1, 10, 2, 20]);
+```
+
+## API Reference
+
+### Call Signature
 
 > **flatMap**\<`T`, `U`\>(`callbackfn`, `iterable`): `Generator`\<`U`, `void`, `unknown`\>
 
-Defined in: [flatMap.ts:37](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/flatMap.ts#L37)
+Defined in: [flatMap.ts:35](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/flatMap.ts#L35)
 
-`flatMap(callbackfn, iterable)` lazily yields every value from each iterable returned by `CALLBACKFN` for `ITERABLE`.
+#### Type Parameters
 
-## Usage
-```ts
-const words = [...flatMap((line) => line.split(" "), lines)];
-```
-
-For an async `ITERABLE`, `flatMap` returns an AsyncGenerator, awaits `CALLBACKFN`,
-and accepts either an iterable or async iterable from it.
-
-```ts
-const words = await Array.fromAsync(flatMap(async (line) => (await line).split(" "), lines()));
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### U
+##### U
 
 `U`
 
-### Parameters
+#### Parameters
 
-#### callbackfn
+##### callbackfn
 
 (`value`, `index`) => `Iterable`\<`U`\>
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Generator`\<`U`, `void`, `unknown`\>
 
-### Examples
-
-It lazily flattens each callback result
-```ts
-expect([...flatMap((value) => [value, value * 2], [1, 2, 3])]).toEqual([1, 2, 2, 4, 3, 6]);
-```
-
-It awaits async callbacks and flattens async results for async `ITERABLE`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-const result = flatMap(async (value) => new Set([value, value * 10]), values());
-expect(await Array.fromAsync(result)).toEqual([1, 10, 2, 20]);
-```
-
-## Call Signature
+### Call Signature
 
 > **flatMap**\<`T`, `U`\>(`callbackfn`, `iterable`): `AsyncGenerator`\<`Awaited`\<`U`\>, `void`, `unknown`\>
 
-Defined in: [flatMap.ts:41](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/flatMap.ts#L41)
+Defined in: [flatMap.ts:39](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/flatMap.ts#L39)
 
-`flatMap(callbackfn, iterable)` lazily yields every value from each iterable returned by `CALLBACKFN` for `ITERABLE`.
+#### Type Parameters
 
-## Usage
-```ts
-const words = [...flatMap((line) => line.split(" "), lines)];
-```
-
-For an async `ITERABLE`, `flatMap` returns an AsyncGenerator, awaits `CALLBACKFN`,
-and accepts either an iterable or async iterable from it.
-
-```ts
-const words = await Array.fromAsync(flatMap(async (line) => (await line).split(" "), lines()));
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### U
+##### U
 
 `U`
 
-### Parameters
+#### Parameters
 
-#### callbackfn
+##### callbackfn
 
 (`value`, `index`) => [`Promisable`](../type-aliases/Promisable.md)\<`Iterable`\<`U`, `any`, `any`\> \| `AsyncIterable`\<`U`, `any`, `any`\>\>
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `AsyncGenerator`\<`Awaited`\<`U`\>, `void`, `unknown`\>
-
-### Examples
-
-It lazily flattens each callback result
-```ts
-expect([...flatMap((value) => [value, value * 2], [1, 2, 3])]).toEqual([1, 2, 2, 4, 3, 6]);
-```
-
-It awaits async callbacks and flattens async results for async `ITERABLE`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-const result = flatMap(async (value) => new Set([value, value * 10]), values());
-expect(await Array.fromAsync(result)).toEqual([1, 10, 2, 20]);
-```

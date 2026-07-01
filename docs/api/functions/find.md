@@ -1,413 +1,200 @@
 ---
 title: find
+description: |-
+  find(predicate, iterable) returns the first value in ITERABLE that
+  satisfies PREDICATE(x) or returns undefined otherwise.
 ---
 
-# Function: find()
+# find
 
-## Call Signature
+`find(predicate, iterable)` returns the first `value` in `ITERABLE` that
+satisfies `PREDICATE(x)` or returns `undefined` otherwise.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/find
+```
+
+## Usage
+```ts
+const todos = await fetch('https://dummyjson.com/todos')
+  .then(async res => (await res.json()).todos as { completed: boolean }[]);
+
+const firstCompleted = find((todo): todo is { id: number; completed: true } => todo.completed, todos);
+console.log(firstCompleted.completed); // true
+```
+
+If `ITERABLE` has an Symbol.asyncIterator property,
+then `find` searches it using the `for await` expression,
+and returns a Promise, regardless of whether or not it
+also has the sync symbol.
+
+```
+async function* count(n: number) {
+  for (let i = 0; i < n; i++) {
+    yield i + 1;
+  }
+}
+
+const firstOdd = await find(x => x % 2 === 1, count);
+console.log(firstOdd) // 1
+```
+
+`find` does not await `PREDICATE`; async behavior is only provided for async iterables.
+
+## Examples
+
+It returns the first matching value
+```ts
+expect(find((value) => value > 2, [1, 2, 3, 4])).toBe(3);
+```
+
+It returns `undefined` when no value matches
+```ts
+expect(find((value) => value > 4, [1, 2, 3])).toBeUndefined();
+```
+
+It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
+```ts
+const iterable = {
+  async *[Symbol.asyncIterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+  *[Symbol.iterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
+
+const promise = find((value) => value > 2, iterable);
+expect(promise).toBeInstanceOf(Promise);
+expect(await promise).toBe(3);
+```
+
+It returns `undefined` asynchronously when no async value matches
+```ts
+async function* values() {
+  yield 1;
+  yield 2;
+}
+
+await expect(find((value) => value > 2, values())).resolves.toBeUndefined();
+```
+
+## API Reference
+
+### Call Signature
 
 > **find**\<`T`, `S`\>(`predicate`, `iterable`): `Promise`\<[`Option`](../type-aliases/Option.md)\<`S`\>\>
 
-Defined in: [find.ts:80](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/find.ts#L80)
+Defined in: [find.ts:78](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/find.ts#L78)
 
-`find(predicate, iterable)` returns the first `value` in `ITERABLE` that
-satisfies `PREDICATE(x)` or returns `undefined` otherwise.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { completed: boolean }[]);
-
-const firstCompleted = find((todo): todo is { id: number; completed: true } => todo.completed, todos);
-console.log(firstCompleted.completed); // true
-```
-
-If `ITERABLE` has an Symbol.asyncIterator property,
-then `find` searches it using the `for await` expression,
-and returns a Promise, regardless of whether or not it
-also has the sync symbol.
-
-```
-async function* count(n: number) {
-  for (let i = 0; i < n; i++) {
-    yield i + 1;
-  }
-}
-
-const firstOdd = await find(x => x % 2 === 1, count);
-console.log(firstOdd) // 1
-```
-
-`find` does not await `PREDICATE`; async behavior is only provided for async iterables.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `value is S`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<[`Option`](../type-aliases/Option.md)\<`S`\>\>
 
-### Examples
-
-It returns the first matching value
-```ts
-expect(find((value) => value > 2, [1, 2, 3, 4])).toBe(3);
-```
-
-It returns `undefined` when no value matches
-```ts
-expect(find((value) => value > 4, [1, 2, 3])).toBeUndefined();
-```
-
-It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-  *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const promise = find((value) => value > 2, iterable);
-expect(promise).toBeInstanceOf(Promise);
-expect(await promise).toBe(3);
-```
-
-It returns `undefined` asynchronously when no async value matches
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-await expect(find((value) => value > 2, values())).resolves.toBeUndefined();
-```
-
-## Call Signature
+### Call Signature
 
 > **find**\<`T`\>(`predicate`, `iterable`): `Promise`\<[`Option`](../type-aliases/Option.md)\<`T`\>\>
 
-Defined in: [find.ts:84](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/find.ts#L84)
+Defined in: [find.ts:82](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/find.ts#L82)
 
-`find(predicate, iterable)` returns the first `value` in `ITERABLE` that
-satisfies `PREDICATE(x)` or returns `undefined` otherwise.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { completed: boolean }[]);
-
-const firstCompleted = find((todo): todo is { id: number; completed: true } => todo.completed, todos);
-console.log(firstCompleted.completed); // true
-```
-
-If `ITERABLE` has an Symbol.asyncIterator property,
-then `find` searches it using the `for await` expression,
-and returns a Promise, regardless of whether or not it
-also has the sync symbol.
-
-```
-async function* count(n: number) {
-  for (let i = 0; i < n; i++) {
-    yield i + 1;
-  }
-}
-
-const firstOdd = await find(x => x % 2 === 1, count);
-console.log(firstOdd) // 1
-```
-
-`find` does not await `PREDICATE`; async behavior is only provided for async iterables.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<[`Option`](../type-aliases/Option.md)\<`T`\>\>
 
-### Examples
-
-It returns the first matching value
-```ts
-expect(find((value) => value > 2, [1, 2, 3, 4])).toBe(3);
-```
-
-It returns `undefined` when no value matches
-```ts
-expect(find((value) => value > 4, [1, 2, 3])).toBeUndefined();
-```
-
-It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-  *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const promise = find((value) => value > 2, iterable);
-expect(promise).toBeInstanceOf(Promise);
-expect(await promise).toBe(3);
-```
-
-It returns `undefined` asynchronously when no async value matches
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-await expect(find((value) => value > 2, values())).resolves.toBeUndefined();
-```
-
-## Call Signature
+### Call Signature
 
 > **find**\<`T`, `S`\>(`predicate`, `iterable`): [`Option`](../type-aliases/Option.md)\<`S`\>
 
-Defined in: [find.ts:88](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/find.ts#L88)
+Defined in: [find.ts:86](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/find.ts#L86)
 
-`find(predicate, iterable)` returns the first `value` in `ITERABLE` that
-satisfies `PREDICATE(x)` or returns `undefined` otherwise.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { completed: boolean }[]);
-
-const firstCompleted = find((todo): todo is { id: number; completed: true } => todo.completed, todos);
-console.log(firstCompleted.completed); // true
-```
-
-If `ITERABLE` has an Symbol.asyncIterator property,
-then `find` searches it using the `for await` expression,
-and returns a Promise, regardless of whether or not it
-also has the sync symbol.
-
-```
-async function* count(n: number) {
-  for (let i = 0; i < n; i++) {
-    yield i + 1;
-  }
-}
-
-const firstOdd = await find(x => x % 2 === 1, count);
-console.log(firstOdd) // 1
-```
-
-`find` does not await `PREDICATE`; async behavior is only provided for async iterables.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `value is S`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 [`Option`](../type-aliases/Option.md)\<`S`\>
 
-### Examples
-
-It returns the first matching value
-```ts
-expect(find((value) => value > 2, [1, 2, 3, 4])).toBe(3);
-```
-
-It returns `undefined` when no value matches
-```ts
-expect(find((value) => value > 4, [1, 2, 3])).toBeUndefined();
-```
-
-It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-  *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const promise = find((value) => value > 2, iterable);
-expect(promise).toBeInstanceOf(Promise);
-expect(await promise).toBe(3);
-```
-
-It returns `undefined` asynchronously when no async value matches
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-await expect(find((value) => value > 2, values())).resolves.toBeUndefined();
-```
-
-## Call Signature
+### Call Signature
 
 > **find**\<`T`\>(`predicate`, `iterable`): [`Option`](../type-aliases/Option.md)\<`T`\>
 
-Defined in: [find.ts:92](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/find.ts#L92)
+Defined in: [find.ts:90](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/find.ts#L90)
 
-`find(predicate, iterable)` returns the first `value` in `ITERABLE` that
-satisfies `PREDICATE(x)` or returns `undefined` otherwise.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { completed: boolean }[]);
-
-const firstCompleted = find((todo): todo is { id: number; completed: true } => todo.completed, todos);
-console.log(firstCompleted.completed); // true
-```
-
-If `ITERABLE` has an Symbol.asyncIterator property,
-then `find` searches it using the `for await` expression,
-and returns a Promise, regardless of whether or not it
-also has the sync symbol.
-
-```
-async function* count(n: number) {
-  for (let i = 0; i < n; i++) {
-    yield i + 1;
-  }
-}
-
-const firstOdd = await find(x => x % 2 === 1, count);
-console.log(firstOdd) // 1
-```
-
-`find` does not await `PREDICATE`; async behavior is only provided for async iterables.
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 [`Option`](../type-aliases/Option.md)\<`T`\>
-
-### Examples
-
-It returns the first matching value
-```ts
-expect(find((value) => value > 2, [1, 2, 3, 4])).toBe(3);
-```
-
-It returns `undefined` when no value matches
-```ts
-expect(find((value) => value > 4, [1, 2, 3])).toBeUndefined();
-```
-
-It returns asynchronously for async ITERABLE even when it also has a sync iterator symbol
-```ts
-const iterable = {
-  async *[Symbol.asyncIterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-  *[Symbol.iterator]() {
-    yield 1;
-    yield 2;
-    yield 3;
-  },
-};
-
-const promise = find((value) => value > 2, iterable);
-expect(promise).toBeInstanceOf(Promise);
-expect(await promise).toBe(3);
-```
-
-It returns `undefined` asynchronously when no async value matches
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-await expect(find((value) => value > 2, values())).resolves.toBeUndefined();
-```

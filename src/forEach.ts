@@ -22,8 +22,6 @@ import type { Promisable } from "./types.js";
  * await forEach(chunk => console.log('recv %d bytes', chunk.length), res.body)
  * ```
  *
- * ## Examples
- *
  * @example
  * It immediately consumes the iterable
  * ```ts

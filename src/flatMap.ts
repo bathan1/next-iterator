@@ -15,8 +15,6 @@ import type { Promisable } from "./types.js";
  * const words = await Array.fromAsync(flatMap(async (line) => (await line).split(" "), lines()));
  * ```
  *
- * ## Examples
- *
  * @example
  * It lazily flattens each callback result
  * ```ts

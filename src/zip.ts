@@ -96,8 +96,6 @@ type ZipOutput<
  *
  * There is no async sugar for `zip`.
  *
- * ## Examples
- *
  * @example
  * It stops immediately at the shortest iterable
  * ```ts

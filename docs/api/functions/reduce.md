@@ -1,197 +1,142 @@
 ---
 title: reduce
+description: reduce(callbackfn, initialValue, iterable) folds ITERABLE into shape of INITIAL_VALUE by threading each element in ITERABLE through the reducer CALLBACKFN.
 ---
 
-# Function: reduce()
+# reduce
 
-## Call Signature
+`reduce(callbackfn, initialValue, iterable)` folds `ITERABLE` into shape of `INITIAL_VALUE` by threading each element in `ITERABLE` through the reducer `CALLBACKFN`.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/reduce
+```
+
+## Usage
+```ts
+const todos = await fetch('https://dummyjson.com/todos')
+  .then(async res => (await res.json()).todos as { todo: string }[]);
+
+const lines = reduce((acc, todoItem) => {
+  return acc + `${todoItem.todo}\n`
+}, "", todos);
+console.log(lines);
+```
+
+The async sugar for `reduce` handles unboxing (`await`-ing) each `value` from
+async `ITERABLE` and with the result of `CALLBACKFN(ACC, value)` on each iteration.
+
+```ts
+const response = await fetch('https://dummyjson.com/todos')
+if (!response.body) {
+  throw new Error("invalid response", { cause: response.status })
+}
+const numBytes = await reduce((acc, chunk) => acc + chunk.length, 0, response.body);
+console.log(numBytes);
+```
+
+## Examples
+
+It folds `ITERABLE` into `INITIAL_VALUE`
+```ts
+expect(reduce((sum, x) => sum + x, 0, [1, 2, 3])).toBe(6);
+```
+
+It passes the index to `CALLBACKFN`
+```ts
+expect(reduce((acc, x, i) => [...acc, `${i}:${x}`], [] as string[], ["a", "b"])).toEqual([
+  "0:a",
+  "1:b",
+]);
+```
+
+It awaits values from `ITERABLE` when it is async along with `CALLBACKFN`
+```ts
+async function* numbers() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const result = await reduce(
+  async (acc, value, index) => {
+    const doubled = await Promise.resolve(value * 2);
+    return [...acc, `${index}:${doubled}`];
+  },
+  [] as string[],
+  numbers()
+);
+
+expect(result).toEqual(["0:2", "1:4", "2:6"]);
+```
+
+## API Reference
+
+### Call Signature
 
 > **reduce**\<`T`, `U`\>(`callbackfn`, `initialValue`, `iterable`): `Promise`\<`Awaited`\<`U`\>\>
 
-Defined in: [reduce.ts:67](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/reduce.ts#L67)
+Defined in: [reduce.ts:65](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/reduce.ts#L65)
 
-`reduce(callbackfn, initialValue, iterable)` folds `ITERABLE` into shape of `INITIAL_VALUE` by threading each element in `ITERABLE` through the reducer `CALLBACKFN`.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { todo: string }[]);
-
-const lines = reduce((acc, todoItem) => {
-  return acc + `${todoItem.todo}\n`
-}, "", todos);
-console.log(lines);
-```
-
-The async sugar for `reduce` handles unboxing (`await`-ing) each `value` from
-async `ITERABLE` and with the result of `CALLBACKFN(ACC, value)` on each iteration.
-
-```ts
-const response = await fetch('https://dummyjson.com/todos')
-if (!response.body) {
-  throw new Error("invalid response", { cause: response.status })
-}
-const numBytes = await reduce((acc, chunk) => acc + chunk.length, 0, response.body);
-console.log(numBytes);
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### U
+##### U
 
 `U`
 
-### Parameters
+#### Parameters
 
-#### callbackfn
+##### callbackfn
 
 (`acc`, `value`, `index`) => [`Promisable`](../type-aliases/Promisable.md)\<`U`\>
 
-#### initialValue
+##### initialValue
 
 `U`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<`Awaited`\<`U`\>\>
 
-### Examples
-
-It folds `ITERABLE` into `INITIAL_VALUE`
-```ts
-expect(reduce((sum, x) => sum + x, 0, [1, 2, 3])).toBe(6);
-```
-
-It passes the index to `CALLBACKFN`
-```ts
-expect(reduce((acc, x, i) => [...acc, `${i}:${x}`], [] as string[], ["a", "b"])).toEqual([
-  "0:a",
-  "1:b",
-]);
-```
-
-It awaits values from `ITERABLE` when it is async along with `CALLBACKFN`
-```ts
-async function* numbers() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-const result = await reduce(
-  async (acc, value, index) => {
-    const doubled = await Promise.resolve(value * 2);
-    return [...acc, `${index}:${doubled}`];
-  },
-  [] as string[],
-  numbers()
-);
-
-expect(result).toEqual(["0:2", "1:4", "2:6"]);
-```
-
-## Call Signature
+### Call Signature
 
 > **reduce**\<`T`, `U`\>(`callbackfn`, `initialValue`, `iterable`): `U`
 
-Defined in: [reduce.ts:72](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/reduce.ts#L72)
+Defined in: [reduce.ts:70](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/reduce.ts#L70)
 
-`reduce(callbackfn, initialValue, iterable)` folds `ITERABLE` into shape of `INITIAL_VALUE` by threading each element in `ITERABLE` through the reducer `CALLBACKFN`.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { todo: string }[]);
-
-const lines = reduce((acc, todoItem) => {
-  return acc + `${todoItem.todo}\n`
-}, "", todos);
-console.log(lines);
-```
-
-The async sugar for `reduce` handles unboxing (`await`-ing) each `value` from
-async `ITERABLE` and with the result of `CALLBACKFN(ACC, value)` on each iteration.
-
-```ts
-const response = await fetch('https://dummyjson.com/todos')
-if (!response.body) {
-  throw new Error("invalid response", { cause: response.status })
-}
-const numBytes = await reduce((acc, chunk) => acc + chunk.length, 0, response.body);
-console.log(numBytes);
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### U
+##### U
 
 `U`
 
-### Parameters
+#### Parameters
 
-#### callbackfn
+##### callbackfn
 
 (`acc`, `value`, `index`) => `U`
 
-#### initialValue
+##### initialValue
 
 `U`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `U`
-
-### Examples
-
-It folds `ITERABLE` into `INITIAL_VALUE`
-```ts
-expect(reduce((sum, x) => sum + x, 0, [1, 2, 3])).toBe(6);
-```
-
-It passes the index to `CALLBACKFN`
-```ts
-expect(reduce((acc, x, i) => [...acc, `${i}:${x}`], [] as string[], ["a", "b"])).toEqual([
-  "0:a",
-  "1:b",
-]);
-```
-
-It awaits values from `ITERABLE` when it is async along with `CALLBACKFN`
-```ts
-async function* numbers() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-const result = await reduce(
-  async (acc, value, index) => {
-    const doubled = await Promise.resolve(value * 2);
-    return [...acc, `${index}:${doubled}`];
-  },
-  [] as string[],
-  numbers()
-);
-
-expect(result).toEqual(["0:2", "1:4", "2:6"]);
-```

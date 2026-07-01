@@ -14,8 +14,6 @@ import type { Promisable } from "./types.js";
  * const hasOverdue = await some(async (invoice) => isOverdue(invoice), invoices());
  * ```
  *
- * ## Examples
- *
  * @example
  * It short-circuits when a value satisfies `PREDICATE`
  * ```ts

@@ -7,9 +7,9 @@ const registry = JSON.parse(
 const functions = registry.items
   .filter(
     (item: { name: string; type: string }) =>
-      item.type === "registry:lib" && item.name.endsWith(".js") && item.name !== "types.js"
+      item.type === "registry:lib" && item.name !== "types"
   )
-  .map((item: { name: string }) => item.name.replace(/\.js$/, ""));
+  .map((item: { name: string }) => item.name);
 
 export default defineConfig({
   title: "utop.js",
@@ -32,7 +32,7 @@ export default defineConfig({
       },
     ],
     outline: {
-      level: [2, 2],
+      level: [2, 3],
       label: "On this page",
     },
     socialLinks: [{ icon: "github", link: registry.homepage }],

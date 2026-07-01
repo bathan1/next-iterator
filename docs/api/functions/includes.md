@@ -1,129 +1,104 @@
 ---
 title: includes
+description: includes(searchElement, iterable, fromIndex?) reports whether SEARCH_ELEMENT occurs in ITERABLE at or after FROM_INDEX.
 ---
 
-# Function: includes()
+# includes
 
-## Call Signature
+`includes(searchElement, iterable, fromIndex?)` reports whether `SEARCH_ELEMENT` occurs in `ITERABLE` at or after `FROM_INDEX`.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/includes
+```
+
+## Usage
+```ts
+const hasAdmin = includes("admin", roles);
+```
+
+When `ITERABLE` is async, then this handles `await`-ing its values before comparing against `SEARCH_ELEMENT`.
+
+```ts
+async function* roles() {
+  yield "member";
+  yield "admin";
+}
+const hasAdmin = includes("admin", roles());
+```
+
+## Examples
+
+It finds values at or after `FROM_INDEX`
+```ts
+expect(includes("a", ["a", "b", "a"], 1)).toBe(true);
+expect(includes("a", ["a", "b"], 1)).toBe(false);
+```
+
+It uses SameValueZero-style matching for `NaN`
+```ts
+expect(includes(NaN, [1, NaN, 3])).toBe(true);
+```
+
+## API Reference
+
+### Call Signature
 
 > **includes**\<`T`\>(`searchElement`, `iterable`, `fromIndex?`): `Promise`\<`boolean`\>
 
-Defined in: [includes.ts:40](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/includes.ts#L40)
+Defined in: [includes.ts:38](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/includes.ts#L38)
 
-`includes(searchElement, iterable, fromIndex?)` reports whether `SEARCH_ELEMENT` occurs in `ITERABLE` at or after `FROM_INDEX`.
+#### Type Parameters
 
-## Usage
-```ts
-const hasAdmin = includes("admin", roles);
-```
-
-When `ITERABLE` is async, then this handles `await`-ing its values before comparing against `SEARCH_ELEMENT`.
-
-```ts
-async function* roles() {
-  yield "member";
-  yield "admin";
-}
-const hasAdmin = includes("admin", roles());
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### searchElement
+##### searchElement
 
 `T`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-#### fromIndex?
+##### fromIndex?
 
 `number`
 
-### Returns
+#### Returns
 
 `Promise`\<`boolean`\>
 
-### Examples
-
-It finds values at or after `FROM_INDEX`
-```ts
-expect(includes("a", ["a", "b", "a"], 1)).toBe(true);
-expect(includes("a", ["a", "b"], 1)).toBe(false);
-```
-
-It uses SameValueZero-style matching for `NaN`
-```ts
-expect(includes(NaN, [1, NaN, 3])).toBe(true);
-```
-
-## Call Signature
+### Call Signature
 
 > **includes**\<`T`\>(`searchElement`, `iterable`, `fromIndex?`): `boolean`
 
-Defined in: [includes.ts:45](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/includes.ts#L45)
+Defined in: [includes.ts:43](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/includes.ts#L43)
 
-`includes(searchElement, iterable, fromIndex?)` reports whether `SEARCH_ELEMENT` occurs in `ITERABLE` at or after `FROM_INDEX`.
+#### Type Parameters
 
-## Usage
-```ts
-const hasAdmin = includes("admin", roles);
-```
-
-When `ITERABLE` is async, then this handles `await`-ing its values before comparing against `SEARCH_ELEMENT`.
-
-```ts
-async function* roles() {
-  yield "member";
-  yield "admin";
-}
-const hasAdmin = includes("admin", roles());
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### searchElement
+##### searchElement
 
 `T`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-#### fromIndex?
+##### fromIndex?
 
 `number`
 
-### Returns
+#### Returns
 
 `boolean`
-
-### Examples
-
-It finds values at or after `FROM_INDEX`
-```ts
-expect(includes("a", ["a", "b", "a"], 1)).toBe(true);
-expect(includes("a", ["a", "b"], 1)).toBe(false);
-```
-
-It uses SameValueZero-style matching for `NaN`
-```ts
-expect(includes(NaN, [1, NaN, 3])).toBe(true);
-```

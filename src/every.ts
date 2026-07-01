@@ -27,8 +27,6 @@ type Seq<T> =
  * console.log(chunksExist); // true
  * ```
  *
- * ## Examples
- *
  * @example
  * It is `true` when every value matches `PREDICATE`
  * ```ts
@@ -49,18 +47,18 @@ type Seq<T> =
  *   yield "world";
  * }
  *
- * expect(await every((x) => x.length === 5, messageQueue()));
+ * expect(await every((x) => x.length === 5, messageQueue())).toEqual(true);
  * ```
  *
  * @example
- * It awaits `PREDICATE` for async `ITERABLE`
+ * It does NOT await `PREDICATE` on async `ITERABLE`
  * ```ts
- * async function* values() {
- *   yield 1;
- *   yield 2;
+ * async function* messageQueue() {
+ *   yield "hello";
+ *   yield "world";
  * }
  *
- * expect(await every(async (value) => value > 0, values())).toBe(true);
+ * expect(await every(async (x) => x.length === 1, messageQueue())).toEqual(true);
  * ```
  */
 export function every<T, S extends T>(

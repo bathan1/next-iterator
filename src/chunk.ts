@@ -31,7 +31,6 @@ type Seq<T> =
  * const todosGrouped = chunk(2, todos);
  * ```
  *
- * ## Examples
  * @example
  * It yields arrays of max size `LIMIT`
  * ```ts
@@ -77,7 +76,7 @@ type Seq<T> =
  *   [3, 4],
  *   [5, 6],
  *   [7, 8],
- *   [9, 10]
+ *   [9, 10],
  * ]);
  * ```
  */

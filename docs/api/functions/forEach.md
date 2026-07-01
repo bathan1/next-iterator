@@ -1,165 +1,118 @@
 ---
 title: forEach
+description: forEach(callbackfn, iterable) calls CALLBACKFN on each element in ITERABLE *immediately* and returns nothing
 ---
 
-# Function: forEach()
+# foreach
 
-## Call Signature
+`forEach(callbackfn, iterable)` calls `CALLBACKFN` on each element in `ITERABLE` *immediately* and returns nothing
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/forEach
+```
+
+## Usage
+```ts
+const todos = await fetch('https://dummyjson.com/todos')
+  .then(async res => (await res.json()).todos);
+
+forEach(console.log, todos);
+```
+
+When `ITERABLE` is async this will also await each call to `CALLBACKFN`
+(regardless of if it returns a Promise or not).
+
+```ts
+const res = await fetch('https://dummyjson.com/todos');
+if (!res.body) {
+  throw new Error("bad response");
+}
+await forEach(chunk => console.log('recv %d bytes', chunk.length), res.body)
+```
+
+## Examples
+
+It immediately consumes the iterable
+```ts
+const iterable = [1, 2, 3].values();
+forEach(() => void 0, iterable);
+```
+
+It consumes async iterables as a Promise
+```ts
+async function* numbers() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const logSync = vi.fn();
+const logAsync = vi.fn(async (_: number) => void 0);
+
+await forEach(logSync, numbers());
+await forEach(logAsync, numbers());
+
+expect(logSync).toHaveBeenCalledWith(1, 0);
+expect(logSync).toHaveBeenCalledWith(2, 1);
+expect(logSync).toHaveBeenCalledWith(3, 2);
+
+expect(logAsync).toHaveBeenCalledWith(1, 0);
+expect(logAsync).toHaveBeenCalledWith(2, 1);
+expect(logAsync).toHaveBeenCalledWith(3, 2);
+```
+
+## API Reference
+
+### Call Signature
 
 > **forEach**\<`T`\>(`callbackfn`, `iterable`): `Promise`\<`void`\>
 
-Defined in: [forEach.ts:58](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/forEach.ts#L58)
+Defined in: [forEach.ts:56](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/forEach.ts#L56)
 
-`forEach(callbackfn, iterable)` calls `CALLBACKFN` on each element in `ITERABLE` *immediately* and returns nothing
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos);
-
-forEach(console.log, todos);
-```
-
-When `ITERABLE` is async this will also await each call to `CALLBACKFN`
-(regardless of if it returns a Promise or not).
-
-```ts
-const res = await fetch('https://dummyjson.com/todos');
-if (!res.body) {
-  throw new Error("bad response");
-}
-await forEach(chunk => console.log('recv %d bytes', chunk.length), res.body)
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### callbackfn
+##### callbackfn
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<`void`\>
 
-### Examples
-
-It immediately consumes the iterable
-```ts
-const iterable = [1, 2, 3].values();
-forEach(() => void 0, iterable);
-```
-
-It consumes async iterables as a Promise
-```ts
-async function* numbers() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-const logSync = vi.fn();
-const logAsync = vi.fn(async (_: number) => void 0);
-
-await forEach(logSync, numbers());
-await forEach(logAsync, numbers());
-
-expect(logSync).toHaveBeenCalledWith(1, 0);
-expect(logSync).toHaveBeenCalledWith(2, 1);
-expect(logSync).toHaveBeenCalledWith(3, 2);
-
-expect(logAsync).toHaveBeenCalledWith(1, 0);
-expect(logAsync).toHaveBeenCalledWith(2, 1);
-expect(logAsync).toHaveBeenCalledWith(3, 2);
-```
-
-## Call Signature
+### Call Signature
 
 > **forEach**\<`T`\>(`callbackfn`, `iterable`): `void`
 
-Defined in: [forEach.ts:62](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/forEach.ts#L62)
+Defined in: [forEach.ts:60](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/forEach.ts#L60)
 
-`forEach(callbackfn, iterable)` calls `CALLBACKFN` on each element in `ITERABLE` *immediately* and returns nothing
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos);
-
-forEach(console.log, todos);
-```
-
-When `ITERABLE` is async this will also await each call to `CALLBACKFN`
-(regardless of if it returns a Promise or not).
-
-```ts
-const res = await fetch('https://dummyjson.com/todos');
-if (!res.body) {
-  throw new Error("bad response");
-}
-await forEach(chunk => console.log('recv %d bytes', chunk.length), res.body)
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### callbackfn
+##### callbackfn
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `void`
-
-### Examples
-
-It immediately consumes the iterable
-```ts
-const iterable = [1, 2, 3].values();
-forEach(() => void 0, iterable);
-```
-
-It consumes async iterables as a Promise
-```ts
-async function* numbers() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-const logSync = vi.fn();
-const logAsync = vi.fn(async (_: number) => void 0);
-
-await forEach(logSync, numbers());
-await forEach(logAsync, numbers());
-
-expect(logSync).toHaveBeenCalledWith(1, 0);
-expect(logSync).toHaveBeenCalledWith(2, 1);
-expect(logSync).toHaveBeenCalledWith(3, 2);
-
-expect(logAsync).toHaveBeenCalledWith(1, 0);
-expect(logAsync).toHaveBeenCalledWith(2, 1);
-expect(logAsync).toHaveBeenCalledWith(3, 2);
-```

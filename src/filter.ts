@@ -16,8 +16,6 @@ type Seq<T> =
  * const available = await Array.fromAsync(filter(async (id) => (await fetch(`/items/${id}`)).ok, ids()));
  * ```
  *
- * ## Examples
- *
  * @example
  * It lazily yields matching values and their indexes
  * ```ts
@@ -27,14 +25,15 @@ type Seq<T> =
  * ```
  *
  * @example
- * It awaits `PREDICATE` when `ITERABLE` is async
+ * It does *not* await `PREDICATE` even when `ITERABLE` is async
  * ```ts
  * async function* values() {
  *   yield 1;
  *   yield 2;
  *   yield 3;
  * }
- * expect(await Array.fromAsync(filter(async (value) => value > 1, values()))).toEqual([2, 3]);
+ * expect(await Array.fromAsync(filter((value) => value > 1, values()))).toEqual([2, 3]);
+ * expect(await Array.fromAsync(filter(async (value) => value > 1, values()))).toEqual([1, 2, 3]);
  * ```
  */
 export function filter<T, S extends T>(

@@ -13,8 +13,6 @@ type Seq<T> =
  *
  * `findErr` does not await `PREDICATE`; async behavior is only provided for async iterables.
  *
- * ## Examples
- *
  * @example
  * It returns the first value that satisfies `CALLBACKFN`
  * ```ts

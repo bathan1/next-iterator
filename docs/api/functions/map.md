@@ -1,15 +1,17 @@
 ---
 title: map
-description: "`map(callbackfn, iterable)` is `CALLBACKFN(x1), CALLBACKFN(x2), ..., CALLBACKFN(xn)` for each `xi` in `ITERABLE`."
+description: map(callbackfn, iterable) is CALLBACKFN(x1), CALLBACKFN(x2), ..., CALLBACKFN(xn) for each xi in ITERABLE.
 ---
 
-# Variable: map
-
-> `const` **map**: `Map`
-
-Defined in: [map.ts:119](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/map.ts#L119)
+# map
 
 `map(callbackfn, iterable)` is `CALLBACKFN(x1), CALLBACKFN(x2), ..., CALLBACKFN(xn)` for each `xi` in `ITERABLE`.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/map
+```
 
 ## Usage
 ```ts
@@ -41,8 +43,6 @@ const doubleText = map.bind(null, (x: number) => String(x * 2));
 console.log(doubleText([1, 2, 3]))
 console.log(doubleText([2, 4, 6]))
 ```
-
-## Examples
 
 ## Examples
 
@@ -100,3 +100,9 @@ const asyncResult = await Array.fromAsync(
 expect(syncResult).toEqual(asyncResult);
 expect(syncResult).toEqual([2, 4, 6]);
 ```
+
+## API Reference
+
+> `const` **map**: `Map`
+
+Defined in: [map.ts:117](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/map.ts#L117)

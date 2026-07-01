@@ -1,14 +1,17 @@
 ---
 title: perform
+description: perform(iterator) consumes ITERATOR and returns its final return value.
 ---
 
-# Function: perform()
-
-> **perform**\<`T`, `R`\>(`iterator`): `R`
-
-Defined in: [perform.ts:29](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/perform.ts#L29)
+# perform
 
 `perform(iterator)` consumes `ITERATOR` and returns its final return value.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/perform
+```
 
 ## Usage
 ```ts
@@ -24,28 +27,6 @@ for await (const event of events()) console.log(event);
 
 ## Examples
 
-## Type Parameters
-
-### T
-
-`T`
-
-### R
-
-`R`
-
-## Parameters
-
-### iterator
-
-`Iterator`\<`T`, `R`, `unknown`\> \| `Iterable`\<`T`, `R`, `unknown`\>
-
-## Returns
-
-`R`
-
-## Example
-
 It consumes an iterator and returns its final value
 ```ts
 function* work() {
@@ -55,3 +36,29 @@ function* work() {
 }
 expect(perform(work())).toBe("done");
 ```
+
+## API Reference
+
+> **perform**\<`T`, `R`\>(`iterator`): `R`
+
+Defined in: [perform.ts:27](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/perform.ts#L27)
+
+### Type Parameters
+
+#### T
+
+`T`
+
+#### R
+
+`R`
+
+### Parameters
+
+#### iterator
+
+`Iterator`\<`T`, `R`, `unknown`\> \| `Iterable`\<`T`, `R`, `unknown`\>
+
+### Returns
+
+`R`

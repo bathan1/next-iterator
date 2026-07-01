@@ -25,8 +25,6 @@ const compare = {
  * const ranked = orderBy(["score"], "desc", await Array.fromAsync(players()));
  * ```
  *
- * ## Examples
- *
  * @example
  * It sorts by later keys when earlier keys are equal
  * ```ts

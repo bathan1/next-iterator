@@ -56,8 +56,6 @@ type Map = {
  * console.log(doubleText([2, 4, 6]))
  * ```
  *
- * ## Examples
- *
  * @example
  * It calls `CALLBACKFN` on demand
  * ```ts

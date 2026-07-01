@@ -26,8 +26,6 @@ type Seq<T> =
  * console.log(droppedFirstTwoAsync); // logs [3, 4, 5]
  * ```
  *
- * ## Examples
- *
  * @example
  * It drops the first `LIMIT` values from `ITERABLE`
  * ```ts
@@ -51,7 +49,7 @@ type Seq<T> =
  *   yield "b";
  *   yield "c";
  *   yield "d";
- * }
+ * };
  *
  * const droppedFirstTwo = await Array.fromAsync(drop(2, asyncIterable()));
  * expect(droppedFirstTwo).toEqual(["c", "d"]);

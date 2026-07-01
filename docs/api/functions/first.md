@@ -1,107 +1,110 @@
 ---
 title: first
+description: |-
+  first(iterable) returns the first value of ITERABLE, or undefined
+  if ITERABLE is empty.
 ---
 
-# Function: first()
+# first
 
-## Call Signature
+`first(iterable)` returns the first value of `ITERABLE`, or `undefined`
+if `ITERABLE` is empty.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/first
+```
+
+## Usage
+```ts
+const firstTodo = first([
+  { todo: "Buy milk" },
+  { todo: "Walk dog" },
+]);
+
+console.log(firstTodo?.todo);
+```
+
+`first` also supports AsyncIterables, in which case it awaits
+the first available value before returning it.
+
+```ts
+async function* count() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const value = await first(count());
+console.log(value); // 1
+```
+
+## Examples
+
+It returns the first value from an iterable
+```ts
+expect(first(["foo", "bar", "baz"])).toBe("foo");
+```
+
+It returns undefined when the iterable is empty
+```ts
+expect(first([])).toBeUndefined();
+```
+
+It returns the first awaited value from an async iterable
+```ts
+async function* values() {
+  yield "foo";
+  yield "bar";
+  yield "baz";
+}
+
+await expect(first(values())).resolves.toBe("foo");
+```
+
+## API Reference
+
+### Call Signature
 
 > **first**\<`T`\>(`iterable`): `Promise`\<[`Option`](../type-aliases/Option.md)\<`T`\>\>
 
-Defined in: [first.ts:33](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/first.ts#L33)
+Defined in: [first.ts:55](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/first.ts#L55)
 
-`first(iterable)` returns the first value of `ITERABLE`, or `undefined`
-if `ITERABLE` is empty.
+#### Type Parameters
 
-## Usage
-```ts
-const firstTodo = first([
-  { todo: "Buy milk" },
-  { todo: "Walk dog" },
-]);
-
-console.log(firstTodo?.todo);
-```
-
-`first` also supports AsyncIterables, in which case it awaits
-the first available value before returning it.
-
-```ts
-async function* count() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-const value = await first(count());
-console.log(value); // 1
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<[`Option`](../type-aliases/Option.md)\<`T`\>\>
 
-## Call Signature
+### Call Signature
 
 > **first**\<`T`\>(`iterable`): [`Option`](../type-aliases/Option.md)\<`T`\>
 
-Defined in: [first.ts:36](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/first.ts#L36)
+Defined in: [first.ts:58](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/first.ts#L58)
 
-`first(iterable)` returns the first value of `ITERABLE`, or `undefined`
-if `ITERABLE` is empty.
+#### Type Parameters
 
-## Usage
-```ts
-const firstTodo = first([
-  { todo: "Buy milk" },
-  { todo: "Walk dog" },
-]);
-
-console.log(firstTodo?.todo);
-```
-
-`first` also supports AsyncIterables, in which case it awaits
-the first available value before returning it.
-
-```ts
-async function* count() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-
-const value = await first(count());
-console.log(value); // 1
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 [`Option`](../type-aliases/Option.md)\<`T`\>

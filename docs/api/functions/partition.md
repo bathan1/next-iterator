@@ -1,241 +1,155 @@
 ---
 title: partition
+description: partition(predicate, iterable) splits ITERABLE by PREDICATE into matching and non-matching values.
 ---
 
-# Function: partition()
+# partition
 
-## Call Signature
+`partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/partition
+```
+
+## Usage
+```ts
+const [even, odd] = partition((value) => value % 2 === 0, [1, 2, 3, 4]);
+```
+
+`partition` allows for async `ITERABLE`, but does *not* handling awaiting the `PREDICATE` function like the other predicate functions from this lib.
+
+```ts
+async function* values() {
+  yield 1;
+  yield 2;
+  yield 3;
+  yield 4;
+}
+const [even, odd] = partition((value) => value % 2 === 0, values());
+```
+
+## Examples
+
+It separates matching and non-matching values
+```ts
+expect(partition((value) => value % 2 === 0, [1, 2, 3, 4])).toEqual([
+  [2, 4],
+  [1, 3],
+]);
+```
+
+## API Reference
+
+### Call Signature
 
 > **partition**\<`T`, `S`\>(`predicate`, `iterable`): `Promise`\<\[`S`[], `Exclude`\<`T`, `S`\>[]\]\>
 
-Defined in: [partition.ts:38](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/partition.ts#L38)
+Defined in: [partition.ts:36](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/partition.ts#L36)
 
-`partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
+#### Type Parameters
 
-## Usage
-```ts
-const [even, odd] = partition((value) => value % 2 === 0, [1, 2, 3, 4]);
-```
-
-`partition` allows for async `ITERABLE`, but does *not* handling awaiting the `PREDICATE` function like the other predicate functions from this lib.
-
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-  yield 3;
-  yield 4;
-}
-const [even, odd] = partition((value) => value % 2 === 0, values());
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `value is S`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<\[`S`[], `Exclude`\<`T`, `S`\>[]\]\>
 
-### Example
-
-It separates matching and non-matching values
-```ts
-expect(partition((value) => value % 2 === 0, [1, 2, 3, 4])).toEqual([
-  [2, 4],
-  [1, 3],
-]);
-```
-
-## Call Signature
+### Call Signature
 
 > **partition**\<`T`\>(`predicate`, `iterable`): \[`T`[], `T`[]\]
 
-Defined in: [partition.ts:42](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/partition.ts#L42)
+Defined in: [partition.ts:40](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/partition.ts#L40)
 
-`partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
+#### Type Parameters
 
-## Usage
-```ts
-const [even, odd] = partition((value) => value % 2 === 0, [1, 2, 3, 4]);
-```
-
-`partition` allows for async `ITERABLE`, but does *not* handling awaiting the `PREDICATE` function like the other predicate functions from this lib.
-
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-  yield 3;
-  yield 4;
-}
-const [even, odd] = partition((value) => value % 2 === 0, values());
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 \[`T`[], `T`[]\]
 
-### Example
-
-It separates matching and non-matching values
-```ts
-expect(partition((value) => value % 2 === 0, [1, 2, 3, 4])).toEqual([
-  [2, 4],
-  [1, 3],
-]);
-```
-
-## Call Signature
+### Call Signature
 
 > **partition**\<`T`, `S`\>(`predicate`, `iterable`): \[`S`[], `Exclude`\<`T`, `S`\>[]\]
 
-Defined in: [partition.ts:46](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/partition.ts#L46)
+Defined in: [partition.ts:44](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/partition.ts#L44)
 
-`partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
+#### Type Parameters
 
-## Usage
-```ts
-const [even, odd] = partition((value) => value % 2 === 0, [1, 2, 3, 4]);
-```
-
-`partition` allows for async `ITERABLE`, but does *not* handling awaiting the `PREDICATE` function like the other predicate functions from this lib.
-
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-  yield 3;
-  yield 4;
-}
-const [even, odd] = partition((value) => value % 2 === 0, values());
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `value is S`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 \[`S`[], `Exclude`\<`T`, `S`\>[]\]
 
-### Example
-
-It separates matching and non-matching values
-```ts
-expect(partition((value) => value % 2 === 0, [1, 2, 3, 4])).toEqual([
-  [2, 4],
-  [1, 3],
-]);
-```
-
-## Call Signature
+### Call Signature
 
 > **partition**\<`T`\>(`predicate`, `iterable`): \[`T`[], `T`[]\]
 
-Defined in: [partition.ts:50](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/partition.ts#L50)
+Defined in: [partition.ts:48](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/partition.ts#L48)
 
-`partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
+#### Type Parameters
 
-## Usage
-```ts
-const [even, odd] = partition((value) => value % 2 === 0, [1, 2, 3, 4]);
-```
-
-`partition` allows for async `ITERABLE`, but does *not* handling awaiting the `PREDICATE` function like the other predicate functions from this lib.
-
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-  yield 3;
-  yield 4;
-}
-const [even, odd] = partition((value) => value % 2 === 0, values());
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 \[`T`[], `T`[]\]
-
-### Example
-
-It separates matching and non-matching values
-```ts
-expect(partition((value) => value % 2 === 0, [1, 2, 3, 4])).toEqual([
-  [2, 4],
-  [1, 3],
-]);
-```

@@ -1,349 +1,184 @@
 ---
 title: every
+description: |-
+  every(predicate, iterable) is true if every value in ITERABLE satisfies
+  PREDICATE(value) or false otherwise.
 ---
 
-# Function: every()
+# every
 
-## Call Signature
+`every(predicate, iterable)` is `true` if every `value` in `ITERABLE` satisfies
+`PREDICATE(value)` or `false` otherwise.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/every
+```
+
+## Usage
+```ts
+const todos = await fetch('https://dummyjson.com/todos')
+  .then(async res => (await res.json()).todos as { completed: boolean }[]);
+
+const areAllCompleted = every((todo): todo is { id: number; completed: true } => todo.completed, todos);
+console.log(areAllCompleted); // false
+```
+
+If `ITERABLE` is async then this returns the result as a Promise.
+
+```ts
+const response = await fetch('https://dummyjson.com/todos');
+if (!response.body) {
+  throw new Error("bad response", { cause: await response.json().catch(() => "unknown") })
+}
+
+const chunksExist = await every(chunk => chunk.length > 0, response.body);
+console.log(chunksExist); // true
+```
+
+## Examples
+
+It is `true` when every value matches `PREDICATE`
+```ts
+expect(every((x) => x.length > 0, ["a", "bb", "ccc"])).toBe(true);
+```
+
+It is `false` when any value does not match `PREDICATE`
+```ts
+expect(every((x) => x.length > 0, ["a", "", "ccc"])).toBe(false);
+```
+
+It accepts async `ITERABLE`
+```ts
+async function* messageQueue() {
+  yield "hello";
+  yield "world";
+}
+
+expect(await every((x) => x.length === 5, messageQueue())).toEqual(true);
+```
+
+It does NOT await `PREDICATE` on async `ITERABLE`
+```ts
+async function* messageQueue() {
+  yield "hello";
+  yield "world";
+}
+
+expect(await every(async (x) => x.length === 1, messageQueue())).toEqual(true);
+```
+
+## API Reference
+
+### Call Signature
 
 > **every**\<`T`, `S`\>(`predicate`, `iterable`): `Promise`\<`boolean`\>
 
-Defined in: [every.ts:66](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/every.ts#L66)
+Defined in: [every.ts:64](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/every.ts#L64)
 
-`every(predicate, iterable)` is `true` if every `value` in `ITERABLE` satisfies
-`PREDICATE(value)` or `false` otherwise.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { completed: boolean }[]);
-
-const areAllCompleted = every((todo): todo is { id: number; completed: true } => todo.completed, todos);
-console.log(areAllCompleted); // false
-```
-
-If `ITERABLE` is async then this returns the result as a Promise.
-
-```ts
-const response = await fetch('https://dummyjson.com/todos');
-if (!response.body) {
-  throw new Error("bad response", { cause: await response.json().catch(() => "unknown") })
-}
-
-const chunksExist = await every(chunk => chunk.length > 0, response.body);
-console.log(chunksExist); // true
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `value is S`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<`boolean`\>
 
-### Examples
-
-It is `true` when every value matches `PREDICATE`
-```ts
-expect(every((x) => x.length > 0, ["a", "bb", "ccc"])).toBe(true);
-```
-
-It is `false` when any value does not match `PREDICATE`
-```ts
-expect(every((x) => x.length > 0, ["a", "", "ccc"])).toBe(false);
-```
-
-It accepts async `ITERABLE`
-```ts
-async function* messageQueue() {
-  yield "hello";
-  yield "world";
-}
-
-expect(await every((x) => x.length === 5, messageQueue()));
-```
-
-It awaits `PREDICATE` for async `ITERABLE`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-expect(await every(async (value) => value > 0, values())).toBe(true);
-```
-
-## Call Signature
+### Call Signature
 
 > **every**\<`T`\>(`predicate`, `iterable`): `Promise`\<`boolean`\>
 
-Defined in: [every.ts:70](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/every.ts#L70)
+Defined in: [every.ts:68](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/every.ts#L68)
 
-`every(predicate, iterable)` is `true` if every `value` in `ITERABLE` satisfies
-`PREDICATE(value)` or `false` otherwise.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { completed: boolean }[]);
-
-const areAllCompleted = every((todo): todo is { id: number; completed: true } => todo.completed, todos);
-console.log(areAllCompleted); // false
-```
-
-If `ITERABLE` is async then this returns the result as a Promise.
-
-```ts
-const response = await fetch('https://dummyjson.com/todos');
-if (!response.body) {
-  throw new Error("bad response", { cause: await response.json().catch(() => "unknown") })
-}
-
-const chunksExist = await every(chunk => chunk.length > 0, response.body);
-console.log(chunksExist); // true
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<`boolean`\>
 
-### Examples
-
-It is `true` when every value matches `PREDICATE`
-```ts
-expect(every((x) => x.length > 0, ["a", "bb", "ccc"])).toBe(true);
-```
-
-It is `false` when any value does not match `PREDICATE`
-```ts
-expect(every((x) => x.length > 0, ["a", "", "ccc"])).toBe(false);
-```
-
-It accepts async `ITERABLE`
-```ts
-async function* messageQueue() {
-  yield "hello";
-  yield "world";
-}
-
-expect(await every((x) => x.length === 5, messageQueue()));
-```
-
-It awaits `PREDICATE` for async `ITERABLE`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-expect(await every(async (value) => value > 0, values())).toBe(true);
-```
-
-## Call Signature
+### Call Signature
 
 > **every**\<`T`, `S`\>(`predicate`, `iterable`): `iterable is Iterable<S, any, any>`
 
-Defined in: [every.ts:74](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/every.ts#L74)
+Defined in: [every.ts:72](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/every.ts#L72)
 
-`every(predicate, iterable)` is `true` if every `value` in `ITERABLE` satisfies
-`PREDICATE(value)` or `false` otherwise.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { completed: boolean }[]);
-
-const areAllCompleted = every((todo): todo is { id: number; completed: true } => todo.completed, todos);
-console.log(areAllCompleted); // false
-```
-
-If `ITERABLE` is async then this returns the result as a Promise.
-
-```ts
-const response = await fetch('https://dummyjson.com/todos');
-if (!response.body) {
-  throw new Error("bad response", { cause: await response.json().catch(() => "unknown") })
-}
-
-const chunksExist = await every(chunk => chunk.length > 0, response.body);
-console.log(chunksExist); // true
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-#### S
+##### S
 
 `S`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `value is S`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `iterable is Iterable<S, any, any>`
 
-### Examples
-
-It is `true` when every value matches `PREDICATE`
-```ts
-expect(every((x) => x.length > 0, ["a", "bb", "ccc"])).toBe(true);
-```
-
-It is `false` when any value does not match `PREDICATE`
-```ts
-expect(every((x) => x.length > 0, ["a", "", "ccc"])).toBe(false);
-```
-
-It accepts async `ITERABLE`
-```ts
-async function* messageQueue() {
-  yield "hello";
-  yield "world";
-}
-
-expect(await every((x) => x.length === 5, messageQueue()));
-```
-
-It awaits `PREDICATE` for async `ITERABLE`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-expect(await every(async (value) => value > 0, values())).toBe(true);
-```
-
-## Call Signature
+### Call Signature
 
 > **every**\<`T`\>(`predicate`, `iterable`): `boolean`
 
-Defined in: [every.ts:78](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/every.ts#L78)
+Defined in: [every.ts:76](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/every.ts#L76)
 
-`every(predicate, iterable)` is `true` if every `value` in `ITERABLE` satisfies
-`PREDICATE(value)` or `false` otherwise.
+#### Type Parameters
 
-## Usage
-```ts
-const todos = await fetch('https://dummyjson.com/todos')
-  .then(async res => (await res.json()).todos as { completed: boolean }[]);
-
-const areAllCompleted = every((todo): todo is { id: number; completed: true } => todo.completed, todos);
-console.log(areAllCompleted); // false
-```
-
-If `ITERABLE` is async then this returns the result as a Promise.
-
-```ts
-const response = await fetch('https://dummyjson.com/todos');
-if (!response.body) {
-  throw new Error("bad response", { cause: await response.json().catch(() => "unknown") })
-}
-
-const chunksExist = await every(chunk => chunk.length > 0, response.body);
-console.log(chunksExist); // true
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `boolean`
-
-### Examples
-
-It is `true` when every value matches `PREDICATE`
-```ts
-expect(every((x) => x.length > 0, ["a", "bb", "ccc"])).toBe(true);
-```
-
-It is `false` when any value does not match `PREDICATE`
-```ts
-expect(every((x) => x.length > 0, ["a", "", "ccc"])).toBe(false);
-```
-
-It accepts async `ITERABLE`
-```ts
-async function* messageQueue() {
-  yield "hello";
-  yield "world";
-}
-
-expect(await every((x) => x.length === 5, messageQueue()));
-```
-
-It awaits `PREDICATE` for async `ITERABLE`
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-}
-
-expect(await every(async (value) => value > 0, values())).toBe(true);
-```

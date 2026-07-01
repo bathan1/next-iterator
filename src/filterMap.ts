@@ -14,8 +14,6 @@ import { type Option } from "./types.js";
  * const numbers = [...filterMap(Number, await Array.fromAsync(messages()))];
  * ```
  *
- * ## Examples
- *
  * @example
  * It yields only defined callback results
  * ```ts

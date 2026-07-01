@@ -1,123 +1,97 @@
 ---
 title: some
+description: some(predicate, iterable) reports whether any value in ITERABLE satisfies PREDICATE.
 ---
 
-# Function: some()
+# some
 
-## Call Signature
+`some(predicate, iterable)` reports whether any value in `ITERABLE` satisfies `PREDICATE`.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/some
+```
+
+## Usage
+```ts
+const hasOverdue = some((invoice) => invoice.overdue, invoices);
+```
+
+For an async `ITERABLE`, `some` returns a Promise and awaits `PREDICATE`.
+
+```ts
+const hasOverdue = await some(async (invoice) => isOverdue(invoice), invoices());
+```
+
+## Examples
+
+It short-circuits when a value satisfies `PREDICATE`
+```ts
+expect(some((value) => value > 2, [1, 2, 3, 4])).toBe(true);
+expect(some((value) => value > 4, [1, 2, 3, 4])).toBe(false);
+```
+
+It awaits `PREDICATE` when `ITERABLE` is async
+```ts
+async function* values() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+expect(await some(async (value) => value === 2, values())).toBe(true);
+```
+
+## API Reference
+
+### Call Signature
 
 > **some**\<`T`\>(`predicate`, `iterable`): `Promise`\<`boolean`\>
 
-Defined in: [some.ts:37](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/some.ts#L37)
+Defined in: [some.ts:35](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/some.ts#L35)
 
-`some(predicate, iterable)` reports whether any value in `ITERABLE` satisfies `PREDICATE`.
+#### Type Parameters
 
-## Usage
-```ts
-const hasOverdue = some((invoice) => invoice.overdue, invoices);
-```
-
-For an async `ITERABLE`, `some` returns a Promise and awaits `PREDICATE`.
-
-```ts
-const hasOverdue = await some(async (invoice) => isOverdue(invoice), invoices());
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `AsyncIterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `Promise`\<`boolean`\>
 
-### Examples
-
-It short-circuits when a value satisfies `PREDICATE`
-```ts
-expect(some((value) => value > 2, [1, 2, 3, 4])).toBe(true);
-expect(some((value) => value > 4, [1, 2, 3, 4])).toBe(false);
-```
-
-It awaits `PREDICATE` when `ITERABLE` is async
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-expect(await some(async (value) => value === 2, values())).toBe(true);
-```
-
-## Call Signature
+### Call Signature
 
 > **some**\<`T`\>(`predicate`, `iterable`): `boolean`
 
-Defined in: [some.ts:41](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/some.ts#L41)
+Defined in: [some.ts:39](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/some.ts#L39)
 
-`some(predicate, iterable)` reports whether any value in `ITERABLE` satisfies `PREDICATE`.
+#### Type Parameters
 
-## Usage
-```ts
-const hasOverdue = some((invoice) => invoice.overdue, invoices);
-```
-
-For an async `ITERABLE`, `some` returns a Promise and awaits `PREDICATE`.
-
-```ts
-const hasOverdue = await some(async (invoice) => isOverdue(invoice), invoices());
-```
-
-## Examples
-
-### Type Parameters
-
-#### T
+##### T
 
 `T`
 
-### Parameters
+#### Parameters
 
-#### predicate
+##### predicate
 
 (`value`, `index`) => `unknown`
 
-#### iterable
+##### iterable
 
 `Iterable`\<`T`\>
 
-### Returns
+#### Returns
 
 `boolean`
-
-### Examples
-
-It short-circuits when a value satisfies `PREDICATE`
-```ts
-expect(some((value) => value > 2, [1, 2, 3, 4])).toBe(true);
-expect(some((value) => value > 4, [1, 2, 3, 4])).toBe(false);
-```
-
-It awaits `PREDICATE` when `ITERABLE` is async
-```ts
-async function* values() {
-  yield 1;
-  yield 2;
-  yield 3;
-}
-expect(await some(async (value) => value === 2, values())).toBe(true);
-```

@@ -5,8 +5,8 @@
   "description": "",
   "scripts": {
     "docs:build": "pnpm docs:generate && vitepress build docs",
-    "docs:dev": "pnpm docs:generate && vitepress dev docs",
-    "docs:generate": "node scripts/prepare-docs.mjs && typedoc",
+    "docs:dev": "vitepress dev docs",
+    "docs:generate": "node scripts/apply-examples.mjs && node scripts/prepare-docs.mjs && typedoc",
     "docs:preview": "vitepress preview docs",
     "test": "vitest",
     "format": "prettier --write '{docs,scripts,src}/**/*.{js,mjs,ts,json,md}' '*.{js,mjs,ts,json,md}'",

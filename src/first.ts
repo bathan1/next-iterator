@@ -28,7 +28,29 @@ import type { Option, Promisable } from "./types";
  * console.log(value); // 1
  * ```
  *
- * ## Examples
+ * @example
+ * It returns the first value from an iterable
+ * ```ts
+ * expect(first(["foo", "bar", "baz"])).toBe("foo");
+ * ```
+ *
+ * @example
+ * It returns undefined when the iterable is empty
+ * ```ts
+ * expect(first([])).toBeUndefined();
+ * ```
+ *
+ * @example
+ * It returns the first awaited value from an async iterable
+ * ```ts
+ * async function* values() {
+ *   yield "foo";
+ *   yield "bar";
+ *   yield "baz";
+ * }
+ *
+ * await expect(first(values())).resolves.toBe("foo");
+ * ```
  */
 export function first<T>(
   iterable: AsyncIterable<T>,

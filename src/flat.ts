@@ -13,8 +13,6 @@ export {};
  * const values = [...flat(await Array.fromAsync(groups()))];
  * ```
  *
- * ## Examples
- *
  * @example
  * It flattens one level of any nested iterables
  * ```ts

@@ -14,8 +14,6 @@ export {};
  * const ascending = sort((a, b) => a - b, await Array.fromAsync(values()));
  * ```
  *
- * ## Examples
- *
  * @example
  * It returns a new sorted array without changing the source
  * ```ts

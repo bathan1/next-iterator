@@ -1,14 +1,17 @@
 ---
 title: filterMap
+description: filterMap(callbackfn, iterable) lazily yields each defined CALLBACKFN result for ITERABLE.
 ---
 
-# Function: filterMap()
-
-> **filterMap**\<`T`, `U`\>(`callbackfn`, `iterable`): `Generator`\<`U`, `void`, `unknown`\>
-
-Defined in: [filterMap.ts:27](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/filterMap.ts#L27)
+# filtermap
 
 `filterMap(callbackfn, iterable)` lazily yields each defined `CALLBACKFN` result for `ITERABLE`.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/filterMap
+```
 
 ## Usage
 ```ts
@@ -23,35 +26,39 @@ const numbers = [...filterMap(Number, await Array.fromAsync(messages()))];
 
 ## Examples
 
-## Type Parameters
-
-### T
-
-`T`
-
-### U
-
-`U`
-
-## Parameters
-
-### callbackfn
-
-(`value`, `index`) => [`Option`](../type-aliases/Option.md)\<`U` \| `null`\>
-
-### iterable
-
-`Iterable`\<`T`\>
-
-## Returns
-
-`Generator`\<`U`, `void`, `unknown`\>
-
-## Example
-
 It yields only defined callback results
 ```ts
 expect([
   ...filterMap((value) => (value % 2 ? undefined : String(value)), [1, 2, 3, 4]),
 ]).toEqual(["2", "4"]);
 ```
+
+## API Reference
+
+> **filterMap**\<`T`, `U`\>(`callbackfn`, `iterable`): `Generator`\<`U`, `void`, `unknown`\>
+
+Defined in: [filterMap.ts:25](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/filterMap.ts#L25)
+
+### Type Parameters
+
+#### T
+
+`T`
+
+#### U
+
+`U`
+
+### Parameters
+
+#### callbackfn
+
+(`value`, `index`) => [`Option`](../type-aliases/Option.md)\<`U` \| `null`\>
+
+#### iterable
+
+`Iterable`\<`T`\>
+
+### Returns
+
+`Generator`\<`U`, `void`, `unknown`\>

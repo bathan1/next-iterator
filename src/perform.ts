@@ -13,8 +13,6 @@
  * for await (const event of events()) console.log(event);
  * ```
  *
- * ## Examples
- *
  * @example
  * It consumes an iterator and returns its final value
  * ```ts

@@ -22,8 +22,6 @@ type Seq<T> =
  * const hasAdmin = includes("admin", roles());
  * ```
  *
- * ## Examples
- *
  * @example
  * It finds values at or after `FROM_INDEX`
  * ```ts

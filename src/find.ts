@@ -31,8 +31,6 @@ import { type Option, None } from "./types.js";
  *
  * `find` does not await `PREDICATE`; async behavior is only provided for async iterables.
  *
- * ## Examples
- *
  * @example
  * It returns the first matching value
  * ```ts

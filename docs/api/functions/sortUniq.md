@@ -1,14 +1,17 @@
 ---
 title: sortUniq
+description: sortUniq(compareFn, iterable) sorts ITERABLE with COMPAREFN and removes comparator-equal neighbors.
 ---
 
-# Function: sortUniq()
-
-> **sortUniq**\<`T`\>(`compareFn`, `iterable`): `T`[]
-
-Defined in: [sortUniq.ts:25](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/sortUniq.ts#L25)
+# sortuniq
 
 `sortUniq(compareFn, iterable)` sorts `ITERABLE` with `COMPAREFN` and removes comparator-equal neighbors.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/sortUniq
+```
 
 ## Usage
 ```ts
@@ -23,29 +26,33 @@ const unique = sortUniq((a, b) => a - b, await Array.fromAsync(values()));
 
 ## Examples
 
-## Type Parameters
-
-### T
-
-`T`
-
-## Parameters
-
-### compareFn
-
-(`a`, `b`) => `number`
-
-### iterable
-
-`Iterable`\<`T`\>
-
-## Returns
-
-`T`[]
-
-## Example
-
 It sorts and removes comparator-equal values
 ```ts
 expect(sortUniq((a, b) => a - b, [3, 1, 2, 3, 1])).toEqual([1, 2, 3]);
 ```
+
+## API Reference
+
+> **sortUniq**\<`T`\>(`compareFn`, `iterable`): `T`[]
+
+Defined in: [sortUniq.ts:23](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/sortUniq.ts#L23)
+
+### Type Parameters
+
+#### T
+
+`T`
+
+### Parameters
+
+#### compareFn
+
+(`a`, `b`) => `number`
+
+#### iterable
+
+`Iterable`\<`T`\>
+
+### Returns
+
+`T`[]

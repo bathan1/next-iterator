@@ -24,8 +24,6 @@ type Seq<T> =
  * const [even, odd] = partition((value) => value % 2 === 0, values());
  * ```
  *
- * ## Examples
- *
  * @example
  * It separates matching and non-matching values
  * ```ts

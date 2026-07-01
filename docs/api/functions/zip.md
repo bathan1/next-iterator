@@ -1,12 +1,11 @@
 ---
 title: zip
+description: |-
+  zip(iterables, options?) yields zip-aggregated elements from ITERABLES using OPTIONS.
+  Excess element behavior is determined by OPTIONS.mode, where:
 ---
 
-# Function: zip()
-
-> **zip**\<`T`, `O`\>(`iterables`, `options?`): `Generator`\<`ZipOutput`\<`T`, `O`\>\>
-
-Defined in: [zip.ts:208](https://github.com/bathan1/utop.js/blob/723af95e5440c257f10c7355cacfd1ff80d7b58b/src/zip.ts#L208)
+# zip
 
 `zip(iterables, options?)` yields zip-aggregated elements from `ITERABLES` using `OPTIONS`.
 Excess element behavior is determined by `OPTIONS.mode`, where:
@@ -16,6 +15,12 @@ Excess element behavior is determined by `OPTIONS.mode`, where:
 - `strict`: throws if iterables have different lengths
 
 When `MODE = "longest"`, the elements from `PADDING` are used to fill in the gaps.
+
+## Installation
+
+```bash
+pnpm dlx shadcn@latest add bathan1/utop.js/zip
+```
 
 ## Usage
 ```ts
@@ -29,32 +34,6 @@ for (const [month, day] of zipped) {
 ```
 
 There is no async sugar for `zip`.
-
-## Examples
-
-## Type Parameters
-
-### T
-
-`T` *extends* readonly `Iterable`\<`unknown`, `any`, `any`\>[]
-
-### O
-
-`O` *extends* `ZipOptions` \| `undefined` = `undefined`
-
-## Parameters
-
-### iterables
-
-readonly \[`T`\]
-
-### options?
-
-`O`
-
-## Returns
-
-`Generator`\<`ZipOutput`\<`T`, `O`\>\>
 
 ## Examples
 
@@ -159,3 +138,33 @@ const thisIsGoingTo = zip(
 
 expect(thisIsGoingTo).toThrow(TypeError);
 ```
+
+## API Reference
+
+> **zip**\<`T`, `O`\>(`iterables`, `options?`): `Generator`\<`ZipOutput`\<`T`, `O`\>\>
+
+Defined in: [zip.ts:206](https://github.com/bathan1/utop.js/blob/e64f61e6061ac2c61e2caf3dd777f244debf6a43/src/zip.ts#L206)
+
+### Type Parameters
+
+#### T
+
+`T` *extends* readonly `Iterable`\<`unknown`, `any`, `any`\>[]
+
+#### O
+
+`O` *extends* `ZipOptions` \| `undefined` = `undefined`
+
+### Parameters
+
+#### iterables
+
+readonly \[`T`\]
+
+#### options?
+
+`O`
+
+### Returns
+
+`Generator`\<`ZipOutput`\<`T`, `O`\>\>

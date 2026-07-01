@@ -14,8 +14,6 @@ export {};
  * const unique = sortUniq((a, b) => a - b, await Array.fromAsync(values()));
  * ```
  *
- * ## Examples
- *
  * @example
  * It sorts and removes comparator-equal values
  * ```ts

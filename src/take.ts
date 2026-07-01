@@ -33,8 +33,6 @@ type Seq<T> =
  * }
  * ```
  *
- * ## Examples
- *
  * @example
  * It takes at most `LIMIT` values from `ITERABLE`
  * ```ts
@@ -63,7 +61,7 @@ type Seq<T> =
  *   }
  * }
  *
- * expect(await Array.fromAsync(take(2, count()))).toEqual([1, 2])
+ * expect(await Array.fromAsync(take(2, count()))).toEqual([1, 2]);
  * ```
  */
 export function take<T>(
