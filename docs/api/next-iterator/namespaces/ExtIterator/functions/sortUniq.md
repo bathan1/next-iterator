@@ -6,7 +6,7 @@ title: sortUniq
 
 > **sortUniq**\<`T`\>(`compareFn`, `iterable`): `T`[]
 
-Defined in: [ext-iterator/sortUniq.ts:23](https://github.com/bathan1/utop.js/blob/18f11a7ec3fadf611d6deb6767dcbdec581de346/src/ext-iterator/sortUniq.ts#L23)
+Defined in: [ext-iterator/sortUniq.ts:23](https://github.com/bathan1/utop.js/blob/bdc3f98b8e61139cc46ddf4c6d96ebfa7966f602/src/ext-iterator/sortUniq.ts#L23)
 
 `sortUniq(compareFn, iterable)` sorts `ITERABLE` with `COMPAREFN` and removes comparator-equal neighbors.
 
