@@ -12,7 +12,7 @@ const functions = registry.items
   .map((item: { name: string }) => item.name);
 
 export default defineConfig({
-  title: "utop.js",
+  title: "Next Iterator",
   description: "Top-level helpers for JavaScript iterables.",
   cleanUrls: true,
   themeConfig: {

@@ -1,5 +1,5 @@
 {
-  "name": "next-it",
+  "name": "next-iterator",
   "version": "1.0.0",
   "type": "module",
   "description": "Data-last iterator helper functions for shadcn registries.",

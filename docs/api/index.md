@@ -1,10 +1,18 @@
 ---
-title: API Reference
+title: next-iterator
 ---
 
-# API Reference
+# next-iterator
 
-## Objects
+## Namespaces
 
-- [Iterator](variables/Iterator.md)
-- [AsyncIterator](variables/AsyncIterator.md)
+| Namespace | Description |
+| ------ | ------ |
+| [ExtIterator](next-iterator/namespaces/ExtIterator/index.md) | - |
+
+## Variables
+
+| Variable | Description |
+| ------ | ------ |
+| [AsyncIterator](variables/AsyncIterator.md) | - |
+| [Iterator](variables/Iterator.md) | - |

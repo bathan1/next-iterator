@@ -1,5 +1,5 @@
 # Next Iterator
-Next Iterator or `next-it` is an alternative implementation of the
+Next Iterator is an alternative implementation of the
 [Iterator Helper Methods](https://github.com/tc39/proposal-iterator-helpers).
 
 <<< ./examples/dummy-json/completed-todos-content.ts
@@ -36,7 +36,7 @@ The primary API is the userland `Iterator` object that acts as a drop-in replace
 the global `Iterator` (*without* polyfilling it).
 
 ```bash
-npx shadcn@latest add bathan1/next-it/iterator.js # The .js is part of the name!
+npx shadcn@latest add bathan1/next-iterator/iterator.js # The .js is part of the name!
 ```
 
 This will plaster the contents of `./src/iterator.ts` into your `@lib` path by default:
@@ -51,7 +51,7 @@ And that's it!
 Although there is no official spec for an async version of the iterator helper methods, Next Iterator provides one anyway:
 
 ```bash
-npx shadcn@latest add bathan1/next-it/async-iterator.js
+npx shadcn@latest add bathan1/next-iterator/async-iterator.js
 ```
 
 ```ts
@@ -67,7 +67,7 @@ Next Iterator also ships [extra helper functions](./src/ext-iterator/). They are
 registry items with item names following the template: `ext/{function}.js`.
 
 ```bash
-npx shadcn@latest add bathan1/next-it/ext/chunk.js
+npx shadcn@latest add bathan1/next-iterator/ext/chunk.js
 ```
 
 These functions are written to `@/lib/ext-iterator` by default.
@@ -80,7 +80,7 @@ They are all synchronous functions. If they have an async counterpart, then thei
 template: `ext/async.{function}.js`:
 
 ```bash
-npx shadcn@latest add bathan1/next-it/ext/async.chunk.js
+npx shadcn@latest add bathan1/next-iterator/ext/async.chunk.js
 ```
 
 They are written to `@/lib/ext-iterator` directory by default as well:
