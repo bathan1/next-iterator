@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "utop.js",
-  "homepage": "https://github.com/bathan1/utop.js",
+  "name": "next-it",
+  "homepage": "https://github.com/bathan1/next-it",
   "items": [
     {
       "name": "import-rewriter-loader.cjs",
@@ -15,369 +15,407 @@
       ]
     },
     {
-      "name": "types",
+      "name": "iterator.js",
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "chunk",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/chunk.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/chunk.ts"
-        }
-      ]
-    },
-    {
-      "name": "drop",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/drop.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/drop.ts"
-        }
-      ]
-    },
-    {
-      "name": "every",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/every.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/every.ts"
+          "target": "@lib/iterator.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/concat.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "filter",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/filter.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/filter.ts"
+          "target": "@lib/iterator/concat.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/drop.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "filterMap",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/filterMap.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/filterMap.ts"
+          "target": "@lib/iterator/drop.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/every.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "find",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/find.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/find.ts"
+          "target": "@lib/iterator/every.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/filter.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "findErr",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/findErr.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/findErr.ts"
-        }
-      ]
-    },
-    {
-      "name": "findMap",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/findMap.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/findMap.ts"
+          "target": "@lib/iterator/filter.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/find.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "first",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/first.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/first.ts"
+          "target": "@lib/iterator/find.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/flatMap.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "flat",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/flat.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/flat.ts"
-        }
-      ]
-    },
-    {
-      "name": "flatMap",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/flatMap.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/flatMap.ts"
+          "target": "@lib/iterator/flatMap.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/forEach.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "forEach",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/forEach.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/forEach.ts"
+          "target": "@lib/iterator/forEach.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/from.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "includes",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/includes.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/includes.ts"
-        }
-      ]
-    },
-    {
-      "name": "join",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/join.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/join.ts"
+          "target": "@lib/iterator/from.ts"
         },
         {
-          "path": "./src/map.ts",
+          "path": "./src/iterator/includes.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/map.ts"
+          "target": "@lib/iterator/includes.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/map.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "map",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/map.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/map.ts"
+          "target": "@lib/iterator/map.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/reduce.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "not",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/not.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/not.ts"
-        }
-      ]
-    },
-    {
-      "name": "orderBy",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/orderBy.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/orderBy.ts"
-        }
-      ]
-    },
-    {
-      "name": "partition",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/partition.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/partition.ts"
-        }
-      ]
-    },
-    {
-      "name": "partitionMap",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/partitionMap.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/partitionMap.ts"
+          "target": "@lib/iterator/reduce.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/some.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "perform",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/perform.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/perform.ts"
-        }
-      ]
-    },
-    {
-      "name": "reduce",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/reduce.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/reduce.ts"
+          "target": "@lib/iterator/some.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/take.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
-        }
-      ]
-    },
-    {
-      "name": "some",
-      "type": "registry:lib",
-      "files": [
-        {
-          "path": "./src/some.ts",
-          "type": "registry:lib",
-          "target": "@lib/utop/some.ts"
+          "target": "@lib/iterator/take.ts"
         },
         {
-          "path": "./src/types.ts",
+          "path": "./src/iterator/toArray.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/types.ts"
+          "target": "@lib/iterator/toArray.ts"
+        },
+        {
+          "path": "./src/iterator/zip.ts",
+          "type": "registry:lib",
+          "target": "@lib/iterator/zip.ts"
+        },
+        {
+          "path": "./src/iterator/zipKeyed.ts",
+          "type": "registry:lib",
+          "target": "@lib/iterator/zipKeyed.ts"
         }
       ]
     },
     {
-      "name": "sort",
+      "name": "async-iterator.js",
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/sort.ts",
+          "path": "./src/async-iterator.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/sort.ts"
+          "target": "@lib/async-iterator.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.concat.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.concat.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.drop.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.drop.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.every.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.every.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.filter.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.filter.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.find.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.find.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.flatMap.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.flatMap.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.forEach.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.forEach.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.from.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.from.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.includes.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.includes.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.map.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.map.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.reduce.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.reduce.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.some.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.some.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.take.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.take.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.toArray.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.toArray.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.zip.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.zip.ts"
+        },
+        {
+          "path": "./src/async-iterator/async.zipKeyed.ts",
+          "type": "registry:lib",
+          "target": "@lib/async-iterator/async.zipKeyed.ts"
         }
       ]
     },
     {
-      "name": "sortUniq",
+      "name": "ext/chunk.js",
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/sortUniq.ts",
+          "path": "./src/ext-iterator/chunk.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/sortUniq.ts"
+          "target": "@lib/ext-iterator/chunk.ts"
         }
       ]
     },
     {
-      "name": "take",
+      "name": "ext/filterMap.js",
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/take.ts",
+          "path": "./src/ext-iterator/filterMap.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/take.ts"
+          "target": "@lib/ext-iterator/filterMap.ts"
+        },
+        {
+          "path": "./src/ext-iterator/types.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/types.ts"
         }
       ]
     },
     {
-      "name": "zip",
+      "name": "ext/findErr.js",
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/zip.ts",
+          "path": "./src/ext-iterator/findErr.ts",
           "type": "registry:lib",
-          "target": "@lib/utop/zip.ts"
+          "target": "@lib/ext-iterator/findErr.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/findMap.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/findMap.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/findMap.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/first.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/first.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/first.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/flat.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/flat.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/flat.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/join.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/join.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/join.ts"
+        },
+        {
+          "path": "./src/iterator/map.ts",
+          "type": "registry:lib",
+          "target": "@lib/iterator/map.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/orderBy.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/orderBy.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/orderBy.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/partition.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/partition.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/partition.ts"
+        },
+        {
+          "path": "./src/ext-iterator/types.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/types.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/partitionMap.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/partitionMap.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/partitionMap.ts"
+        },
+        {
+          "path": "./src/ext-iterator/types.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/types.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/perform.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/perform.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/perform.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/sort.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/sort.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/sort.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/sortUniq.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/sortUniq.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/sortUniq.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/async.chunk.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/async.chunk.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/async.chunk.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/async.first.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/async.first.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/async.first.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/async.findErr.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/async.findErr.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/async.findErr.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/async.partition.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/async.partition.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/async.partition.ts"
+        }
+      ]
+    },
+    {
+      "name": "ext/async.partitionMap.js",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "./src/ext-iterator/async.partitionMap.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/async.partitionMap.ts"
+        },
+        {
+          "path": "./src/ext-iterator/types.ts",
+          "type": "registry:lib",
+          "target": "@lib/ext-iterator/types.ts"
         }
       ]
     }

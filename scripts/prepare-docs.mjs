@@ -5,6 +5,7 @@ const docs = new URL("../docs/", import.meta.url);
 const readme = await readFile(new URL("README.md", root), "utf8");
 const registry = JSON.parse(await readFile(new URL("registry.json", root), "utf8"));
 const introduction = readme
+  .replaceAll("<<< ./examples/", "<<< ../examples/")
   .replace("](./src)", `](${registry.homepage}/tree/main/src)`)
   .replaceAll("](./src/", `](${registry.homepage}/blob/main/src/`);
 

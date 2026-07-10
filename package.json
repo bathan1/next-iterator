@@ -1,8 +1,8 @@
 {
-  "name": "utop.js",
+  "name": "next-it",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
+  "description": "Data-last iterator helper functions for shadcn registries.",
   "scripts": {
     "docs:build": "pnpm docs:generate && vitepress build docs",
     "docs:dev": "vitepress dev docs",

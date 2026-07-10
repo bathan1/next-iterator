@@ -62,11 +62,14 @@ function nestHeadings(markdown) {
 }
 
 function functionIndex() {
-  const items = [...registryItems.keys()]
-    .map((name) => `- [${name}](functions/${name}.md)`)
-    .join("\n");
-
-  return `# API Reference\n\n## Functions\n\n${items}`;
+  return [
+    "# API Reference",
+    "",
+    "## Objects",
+    "",
+    "- [Iterator](variables/Iterator.md)",
+    "- [AsyncIterator](variables/AsyncIterator.md)",
+  ].join("\n");
 }
 
 function addInstallation(markdown, itemName) {
@@ -114,7 +117,7 @@ export function load(app) {
       : page.model?.comment?.summary?.map((part) => part.text).join("").split("\n\n")[0]?.trim();
 
     page.frontmatter = {
-      title: page.model?.name === "utop.js" ? "API Reference" : (page.model?.name ?? "API Reference"),
+      title: page.model?.name === "next-it" ? "API Reference" : (page.model?.name ?? "API Reference"),
       ...(summary ? { description: summary } : {}),
       ...page.frontmatter,
     };
@@ -128,7 +131,7 @@ export function load(app) {
   app.renderer.on(MarkdownPageEvent.END, (page) => {
     page.contents = page.contents.replaceAll("variables/map.md", "functions/map.md");
 
-    if (page.model?.name === "utop.js") {
+    if (page.model?.name === "next-it") {
       const { frontmatter } = splitFrontmatter(page.contents);
       page.contents = `${frontmatter}${functionIndex()}\n`;
       return;
