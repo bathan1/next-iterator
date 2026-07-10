@@ -6,7 +6,7 @@ title: Merge
 
 > **Merge**\<`A`, `B`\> = [`Prettify`](Prettify.md)\<`Omit`\<`A`, keyof `B`\> & `B`\>
 
-Defined in: [ext-iterator/types.ts:16](https://github.com/bathan1/utop.js/blob/bdc3f98b8e61139cc46ddf4c6d96ebfa7966f602/src/ext-iterator/types.ts#L16)
+Defined in: [ext-iterator/types.ts:16](https://github.com/bathan1/utop.js/blob/d0b816dc2e537165a668751d1c76e9c28d32dc96/src/ext-iterator/types.ts#L16)
 
 ## Type Parameters
 
