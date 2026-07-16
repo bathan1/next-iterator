@@ -1,5 +1,5 @@
 import { chunk } from "./chunk.js";
-import { take } from "../iterator/take.js";
+import { take } from "./std/take.js";
 import { describe, expect, it } from "vitest";
 import { randomIterableFromArray } from "../-test.helpers.js";
 

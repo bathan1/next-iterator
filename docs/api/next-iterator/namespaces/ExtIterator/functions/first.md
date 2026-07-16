@@ -6,7 +6,7 @@ title: first
 
 > **first**\<`T`\>(`iterable`): `T` \| `undefined`
 
-Defined in: [ext-iterator/first.ts:27](https://github.com/bathan1/utop.js/blob/d0b816dc2e537165a668751d1c76e9c28d32dc96/src/ext-iterator/first.ts#L27)
+Defined in: iterator/first.ts:27
 
 `first(iterable)` returns the first value of `ITERABLE`, or `undefined`
 if `ITERABLE` is empty.

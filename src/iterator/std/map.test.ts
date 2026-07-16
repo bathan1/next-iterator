@@ -1,4 +1,4 @@
-import { randomIterableFromArray } from "../-test.helpers.js";
+import { randomIterableFromArray } from "../../-test.helpers.js";
 import { describe, expect, it, vi } from "vitest";
 import { map } from "./map.js";
 

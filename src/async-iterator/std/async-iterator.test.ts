@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { AsyncIterator } from "../async-iterator.js";
+import { AsyncIterator } from "../../async-iterator.js";
 
 async function* count(n: number) {
   for (let i = 0; i < n; i++) {

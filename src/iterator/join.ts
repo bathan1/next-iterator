@@ -1,4 +1,4 @@
-import { map } from "../iterator/map.js";
+import { map } from "./std/map.js";
 
 /**
  * `join(separator, iterable, toString?)` joins `ITERABLE` with `SEPARATOR`, applying `TO_STRING` when provided.

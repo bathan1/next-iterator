@@ -1,5 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src/index.ts", "src/iterator.ts", "src/async-iterator.ts", "src/ext-iterator/index.ts"],
+  "include": ["src/index.ts", "src/iterator.ts", "src/async-iterator.ts", "src/iterator/index.ts"],
   "exclude": ["src/**/*.test.ts", "src/-test.helpers.ts"]
 }

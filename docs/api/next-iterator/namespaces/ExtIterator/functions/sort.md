@@ -6,7 +6,7 @@ title: sort
 
 > **sort**\<`T`\>(`compareFn`, `iterable`): `T`[]
 
-Defined in: [ext-iterator/sort.ts:25](https://github.com/bathan1/utop.js/blob/d0b816dc2e537165a668751d1c76e9c28d32dc96/src/ext-iterator/sort.ts#L25)
+Defined in: iterator/sort.ts:25
 
 `sort(compareFn, iterable)` returns `ITERABLE` as a new array sorted by `COMPAREFN`.
 

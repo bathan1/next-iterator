@@ -62,33 +62,35 @@ import { AsyncIterator } from "@/lib/async-iterator";
 
 It exposes the exact same set of "standard" helper methods as `Iterator`. For the methods that accept a callback function,
 Promises will be flattened with the exception of predicate functions. This is to maintain the standard behavior
-where anything that is 'truthy' counts as true for these functions (e.g. [`filter`](https://github.com/bathan1/next-it/blob/main/src/async-iterator/async.filter.ts)).
+where anything that is 'truthy' counts as true for these functions (e.g. [`filter`](https://github.com/bathan1/next-it/blob/main/src/async-iterator/std/async.filter.ts)).
 
 ### Extras
-Next Iterator also ships [extra helper functions](https://github.com/bathan1/next-it/blob/main/src/ext-iterator/). They are exposed as standalone
-registry items with item names following the template: `ext/{function}.js`.
+Next Iterator also ships extra helper functions in the [sync](https://github.com/bathan1/next-it/blob/main/src/iterator/) and
+[async](https://github.com/bathan1/next-it/blob/main/src/async-iterator/) iterator directories. They are exposed as standalone
+registry items alongside the top-level iterator exports. Synchronous item names follow the template
+`iterator/{function}.js`:
 
 ```bash
-npx shadcn@latest add bathan1/next-iterator/ext/chunk.js
+npx shadcn@latest add bathan1/next-iterator/iterator/orderBy.js
 ```
 
-These functions are written to `@/lib/ext-iterator` by default.
+These functions are written to `@/lib/iterator` by default.
 
 ```ts
-import { chunk } from "@/lib/ext-iterator/chunk"
+import { orderBy } from "@/lib/iterator/orderBy";
 ```
 
-They are all synchronous functions. If they have an async counterpart, then their item names follow the
-template: `ext/async.{function}.js`:
+If a function has an async counterpart, its item name follows the template
+`async-iterator/{function}.js`:
 
 ```bash
-npx shadcn@latest add bathan1/next-iterator/ext/async.chunk.js
+npx shadcn@latest add bathan1/next-iterator/async-iterator/chunk.js
 ```
 
-They are written to `@/lib/ext-iterator` directory by default as well:
+They are written to `@/lib/async-iterator` by default:
 
 ```ts
-import { chunk } from "@/lib/ext-iterator/async.chunk"
+import { chunk } from "@/lib/async-iterator/chunk";
 ```
 
 Although `Iterator` and `AsyncIterator` both do not come with these extra methods attached,
@@ -96,11 +98,11 @@ you can attach them yourself in your source code:
 
 ```ts
 // @/lib/iterator.ts
-import { zip } from "./iterator/zip.js";
+import { zip } from "./iterator/std/zip.js";
 
 // ...
 
-import { chunk } from "./ext-iterator/chunk.js";
+import { chunk } from "./iterator/chunk.js";
 
 export const Iterator = Object.freeze({
   chunk

@@ -6,7 +6,7 @@ title: findMap
 
 > **findMap**\<`T`, `U`\>(`callbackfn`, `iterable`): `U` \| `undefined`
 
-Defined in: [ext-iterator/findMap.ts:27](https://github.com/bathan1/utop.js/blob/d0b816dc2e537165a668751d1c76e9c28d32dc96/src/ext-iterator/findMap.ts#L27)
+Defined in: iterator/findMap.ts:27
 
 `findMap(callbackfn, iterable)` returns the first defined `CALLBACKFN` result from `ITERABLE`.
 

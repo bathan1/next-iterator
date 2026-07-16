@@ -6,7 +6,7 @@ title: partitionMap
 
 > **partitionMap**\<`T`, `L`, `R`\>(`callbackfn`, `iterable`): \[`L`[], `R`[]\]
 
-Defined in: [ext-iterator/partitionMap.ts:27](https://github.com/bathan1/utop.js/blob/d0b816dc2e537165a668751d1c76e9c28d32dc96/src/ext-iterator/partitionMap.ts#L27)
+Defined in: iterator/partitionMap.ts:27
 
 `partitionMap(callbackfn, iterable)` separates `CALLBACKFN` results for `ITERABLE` into left and right values.
 
