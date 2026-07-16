@@ -66,23 +66,23 @@ where anything that is 'truthy' counts as true for these functions (e.g. [`filte
 Next Iterator also ships extra helper functions in the [sync](./src/iterator/) and
 [async](./src/async-iterator/) iterator directories. They are exposed as standalone
 registry items alongside the top-level iterator exports. Synchronous item names follow the template
-`iterator/{function}.js`:
+`{function}.js`:
 
 ```bash
-npx shadcn@latest add bathan1/next-iterator/iterator/orderBy.js
+npx shadcn@latest add bathan1/next-iterator/findMap.js
 ```
 
 These functions are written to `@/lib/iterator` by default.
 
 ```ts
-import { orderBy } from "@/lib/iterator/orderBy";
+import { findMap } from "@/lib/iterator/findMap";
 ```
 
 If a function has an async counterpart, its item name follows the template
-`async-iterator/{function}.js`:
+`async.{function}.js`:
 
 ```bash
-npx shadcn@latest add bathan1/next-iterator/async-iterator/chunk.js
+npx shadcn@latest add bathan1/next-iterator/async.chunk.js
 ```
 
 They are written to `@/lib/async-iterator` by default:

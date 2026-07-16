@@ -197,7 +197,7 @@
       ]
     },
     {
-      "name": "iterator/chunk.js",
+      "name": "chunk.js",
       "type": "registry:lib",
       "files": [
         {
@@ -208,7 +208,7 @@
       ]
     },
     {
-      "name": "iterator/filterMap.js",
+      "name": "filterMap.js",
       "type": "registry:lib",
       "files": [
         {
@@ -224,7 +224,7 @@
       ]
     },
     {
-      "name": "iterator/findErr.js",
+      "name": "findErr.js",
       "type": "registry:lib",
       "files": [
         {
@@ -235,7 +235,7 @@
       ]
     },
     {
-      "name": "iterator/findMap.js",
+      "name": "findMap.js",
       "type": "registry:lib",
       "files": [
         {
@@ -246,7 +246,7 @@
       ]
     },
     {
-      "name": "iterator/first.js",
+      "name": "first.js",
       "type": "registry:lib",
       "files": [
         {
@@ -257,7 +257,7 @@
       ]
     },
     {
-      "name": "iterator/flat.js",
+      "name": "flat.js",
       "type": "registry:lib",
       "files": [
         {
@@ -268,7 +268,7 @@
       ]
     },
     {
-      "name": "iterator/join.js",
+      "name": "join.js",
       "type": "registry:lib",
       "files": [
         {
@@ -284,7 +284,7 @@
       ]
     },
     {
-      "name": "iterator/orderBy.js",
+      "name": "orderBy.js",
       "type": "registry:lib",
       "files": [
         {
@@ -295,7 +295,7 @@
       ]
     },
     {
-      "name": "iterator/partition.js",
+      "name": "partition.js",
       "type": "registry:lib",
       "files": [
         {
@@ -311,7 +311,7 @@
       ]
     },
     {
-      "name": "iterator/partitionMap.js",
+      "name": "partitionMap.js",
       "type": "registry:lib",
       "files": [
         {
@@ -327,7 +327,7 @@
       ]
     },
     {
-      "name": "iterator/perform.js",
+      "name": "perform.js",
       "type": "registry:lib",
       "files": [
         {
@@ -338,7 +338,7 @@
       ]
     },
     {
-      "name": "iterator/sort.js",
+      "name": "sort.js",
       "type": "registry:lib",
       "files": [
         {
@@ -349,7 +349,7 @@
       ]
     },
     {
-      "name": "iterator/sortUniq.js",
+      "name": "sortUniq.js",
       "type": "registry:lib",
       "files": [
         {
@@ -360,7 +360,7 @@
       ]
     },
     {
-      "name": "async-iterator/chunk.js",
+      "name": "async.chunk.js",
       "type": "registry:lib",
       "files": [
         {
@@ -371,7 +371,7 @@
       ]
     },
     {
-      "name": "async-iterator/first.js",
+      "name": "async.first.js",
       "type": "registry:lib",
       "files": [
         {
@@ -382,7 +382,7 @@
       ]
     },
     {
-      "name": "async-iterator/findErr.js",
+      "name": "async.findErr.js",
       "type": "registry:lib",
       "files": [
         {
@@ -393,7 +393,7 @@
       ]
     },
     {
-      "name": "async-iterator/partition.js",
+      "name": "async.partition.js",
       "type": "registry:lib",
       "files": [
         {
@@ -404,7 +404,7 @@
       ]
     },
     {
-      "name": "async-iterator/partitionMap.js",
+      "name": "async.partitionMap.js",
       "type": "registry:lib",
       "files": [
         {

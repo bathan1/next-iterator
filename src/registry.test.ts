@@ -2,16 +2,22 @@ import { describe, expect, it } from "vitest";
 import registry from "../registry.json";
 
 describe("extra registry items", () => {
-  const extras = registry.items.filter((item) => item.name.includes("/"));
+  const extras = registry.items.filter((item) =>
+    /^\.\/src\/(?:async-iterator|iterator)\//.test(item.files[0]?.path ?? "")
+  );
 
-  it("publishes every helper under its iterator family", () => {
+  it("publishes every helper under a flat item name", () => {
     expect(extras).not.toHaveLength(0);
 
     for (const item of extras) {
-      const [family, itemName] = item.name.split("/");
-      const helperName = itemName?.replace(/\.js$/, "");
+      const source = item.files[0]?.path.match(
+        /^\.\/src\/(async-iterator|iterator)\/(?:async\.)?([^/]+)\.ts$/
+      );
+      const family = source?.[1];
+      const helperName = source?.[2];
       const sourcePrefix = family === "async-iterator" ? "async." : "";
 
+      expect(item.name).toBe(`${sourcePrefix}${helperName}.js`);
       expect(item.files[0]?.path).toBe(`./src/${family}/${sourcePrefix}${helperName}.ts`);
       expect(item.files[0]?.target).toBe(`@lib/${family}/${helperName}.ts`);
       expect(item.files.every((file) => file.target.startsWith(`@lib/${family}/`))).toBe(true);
