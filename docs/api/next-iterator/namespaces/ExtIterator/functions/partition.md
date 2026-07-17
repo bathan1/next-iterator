@@ -8,7 +8,7 @@ title: partition
 
 > **partition**\<`T`, `S`\>(`predicate`, `iterable`): \[`S`[], `Exclude`\<`T`, `S`\>[]\]
 
-Defined in: [iterator/partition.ts:18](https://github.com/bathan1/utop.js/blob/01fe8ef63ad92516bfa781da53e79a5dab117ba4/src/iterator/partition.ts#L18)
+Defined in: [iterator/partition.ts:18](https://github.com/bathan1/utop.js/blob/b962071d4b29e2de8a6542115e70235dff816f10/src/iterator/partition.ts#L18)
 
 `partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
 
@@ -55,7 +55,7 @@ expect(partition((value) => value % 2 === 0, [1, 2, 3, 4])).toEqual([
 
 > **partition**\<`T`\>(`predicate`, `iterable`): \[`T`[], `T`[]\]
 
-Defined in: [iterator/partition.ts:22](https://github.com/bathan1/utop.js/blob/01fe8ef63ad92516bfa781da53e79a5dab117ba4/src/iterator/partition.ts#L22)
+Defined in: [iterator/partition.ts:22](https://github.com/bathan1/utop.js/blob/b962071d4b29e2de8a6542115e70235dff816f10/src/iterator/partition.ts#L22)
 
 `partition(predicate, iterable)` splits `ITERABLE` by `PREDICATE` into matching and non-matching values.
 

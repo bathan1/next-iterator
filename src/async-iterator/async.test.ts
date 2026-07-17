@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { chunk } from "./async.chunk.js";
-import { first } from "./async.first.js";
-import { findErr } from "./async.findErr.js";
-import { partition } from "./async.partition.js";
-import { type Either, partitionMap } from "./async.partitionMap.js";
+import { chunk } from "./chunk.js";
+import { first } from "./first.js";
+import { findErr } from "./findErr.js";
+import { partition } from "./partition.js";
+import { type Either, partitionMap } from "./partitionMap.js";
 
 async function* values() {
   yield 1;

@@ -60,7 +60,7 @@ import { AsyncIterator } from "@/lib/async-iterator";
 
 It exposes the exact same set of "standard" helper methods as `Iterator`. For the methods that accept a callback function,
 Promises will be flattened with the exception of predicate functions. This is to maintain the standard behavior
-where anything that is 'truthy' counts as true for these functions (e.g. [`filter`](./src/async-iterator/std/async.filter.ts)).
+where anything that is 'truthy' counts as true for these functions (e.g. [`filter`](./src/async-iterator/std/filter.ts)).
 
 ### Extras
 Next Iterator also ships extra helper functions in the [sync](./src/iterator/) and
@@ -88,7 +88,7 @@ npx shadcn@latest add bathan1/next-iterator/async.chunk.js
 They are written to `@/lib/async-iterator` by default:
 
 ```ts
-import { chunk } from "@/lib/async-iterator/async.chunk";
+import { chunk } from "@/lib/async-iterator/chunk";
 ```
 
 Although `Iterator` and `AsyncIterator` both do not come with these extra methods attached,

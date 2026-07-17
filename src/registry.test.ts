@@ -18,8 +18,8 @@ describe("extra registry items", () => {
       const sourcePrefix = family === "async-iterator" ? "async." : "";
 
       expect(item.name).toBe(`${sourcePrefix}${helperName}.js`);
-      expect(item.files[0]?.path).toBe(`./src/${family}/${sourcePrefix}${helperName}.ts`);
-      expect(item.files[0]?.target).toBe(`@lib/${family}/${sourcePrefix}${helperName}.ts`);
+      expect(item.files[0]?.path).toBe(`./src/${family}/${helperName}.ts`);
+      expect(item.files[0]?.target).toBe(`@lib/${family}/${helperName}.ts`);
       for (const file of item.files) {
         const fileFamily = file.path.match(/^\.\/src\/(async-iterator|iterator)\//)?.[1];
         expect(file.target.startsWith(`@lib/${fileFamily}/`)).toBe(true);

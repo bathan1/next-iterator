@@ -6,7 +6,7 @@ title: chunk
 
 > **chunk**\<`T`\>(`limit`, `iterable`): `Generator`\<`T`[], `void`, `unknown`\>
 
-Defined in: [iterator/chunk.ts:43](https://github.com/bathan1/utop.js/blob/01fe8ef63ad92516bfa781da53e79a5dab117ba4/src/iterator/chunk.ts#L43)
+Defined in: [iterator/chunk.ts:43](https://github.com/bathan1/utop.js/blob/b962071d4b29e2de8a6542115e70235dff816f10/src/iterator/chunk.ts#L43)
 
 `chunk(limit, iterable)` is a new generator that yields elements of `ITERABLE` materialized as arrays of max size `LIMIT`.
 

@@ -115,84 +115,84 @@
           "target": "@lib/async-iterator.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.concat.ts",
+          "path": "./src/async-iterator/std/concat.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.concat.ts"
+          "target": "@lib/async-iterator/std/concat.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.drop.ts",
+          "path": "./src/async-iterator/std/drop.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.drop.ts"
+          "target": "@lib/async-iterator/std/drop.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.every.ts",
+          "path": "./src/async-iterator/std/every.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.every.ts"
+          "target": "@lib/async-iterator/std/every.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.filter.ts",
+          "path": "./src/async-iterator/std/filter.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.filter.ts"
+          "target": "@lib/async-iterator/std/filter.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.find.ts",
+          "path": "./src/async-iterator/std/find.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.find.ts"
+          "target": "@lib/async-iterator/std/find.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.flatMap.ts",
+          "path": "./src/async-iterator/std/flatMap.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.flatMap.ts"
+          "target": "@lib/async-iterator/std/flatMap.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.forEach.ts",
+          "path": "./src/async-iterator/std/forEach.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.forEach.ts"
+          "target": "@lib/async-iterator/std/forEach.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.from.ts",
+          "path": "./src/async-iterator/std/from.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.from.ts"
+          "target": "@lib/async-iterator/std/from.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.includes.ts",
+          "path": "./src/async-iterator/std/includes.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.includes.ts"
+          "target": "@lib/async-iterator/std/includes.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.map.ts",
+          "path": "./src/async-iterator/std/map.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.map.ts"
+          "target": "@lib/async-iterator/std/map.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.reduce.ts",
+          "path": "./src/async-iterator/std/reduce.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.reduce.ts"
+          "target": "@lib/async-iterator/std/reduce.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.some.ts",
+          "path": "./src/async-iterator/std/some.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.some.ts"
+          "target": "@lib/async-iterator/std/some.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.take.ts",
+          "path": "./src/async-iterator/std/take.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.take.ts"
+          "target": "@lib/async-iterator/std/take.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.toArray.ts",
+          "path": "./src/async-iterator/std/toArray.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.toArray.ts"
+          "target": "@lib/async-iterator/std/toArray.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.zip.ts",
+          "path": "./src/async-iterator/std/zip.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.zip.ts"
+          "target": "@lib/async-iterator/std/zip.ts"
         },
         {
-          "path": "./src/async-iterator/std/async.zipKeyed.ts",
+          "path": "./src/async-iterator/std/zipKeyed.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/std/async.zipKeyed.ts"
+          "target": "@lib/async-iterator/std/zipKeyed.ts"
         }
       ]
     },
@@ -364,9 +364,9 @@
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/async-iterator/async.chunk.ts",
+          "path": "./src/async-iterator/chunk.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/async.chunk.ts"
+          "target": "@lib/async-iterator/chunk.ts"
         }
       ]
     },
@@ -375,9 +375,9 @@
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/async-iterator/async.first.ts",
+          "path": "./src/async-iterator/first.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/async.first.ts"
+          "target": "@lib/async-iterator/first.ts"
         }
       ]
     },
@@ -386,9 +386,9 @@
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/async-iterator/async.findErr.ts",
+          "path": "./src/async-iterator/findErr.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/async.findErr.ts"
+          "target": "@lib/async-iterator/findErr.ts"
         }
       ]
     },
@@ -397,9 +397,9 @@
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/async-iterator/async.partition.ts",
+          "path": "./src/async-iterator/partition.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/async.partition.ts"
+          "target": "@lib/async-iterator/partition.ts"
         }
       ]
     },
@@ -408,9 +408,9 @@
       "type": "registry:lib",
       "files": [
         {
-          "path": "./src/async-iterator/async.partitionMap.ts",
+          "path": "./src/async-iterator/partitionMap.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/async.partitionMap.ts"
+          "target": "@lib/async-iterator/partitionMap.ts"
         },
         {
           "path": "./src/iterator/types.ts",
