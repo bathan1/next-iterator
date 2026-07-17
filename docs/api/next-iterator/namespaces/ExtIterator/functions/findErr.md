@@ -8,7 +8,7 @@ title: findErr
 
 > **findErr**\<`T`, `S`\>(`predicate`, `iterable`): `S`
 
-Defined in: iterator/findErr.ts:22
+Defined in: [iterator/findErr.ts:22](https://github.com/bathan1/utop.js/blob/01fe8ef63ad92516bfa781da53e79a5dab117ba4/src/iterator/findErr.ts#L22)
 
 `findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
 RangeError if no such value is found.
@@ -58,7 +58,7 @@ expect(() => findErr((x) => x > 4, [1, 2, 3])).toThrow(RangeError);
 
 > **findErr**\<`T`\>(`predicate`, `iterable`): `T`
 
-Defined in: iterator/findErr.ts:26
+Defined in: [iterator/findErr.ts:26](https://github.com/bathan1/utop.js/blob/01fe8ef63ad92516bfa781da53e79a5dab117ba4/src/iterator/findErr.ts#L26)
 
 `findErr(predicate, iterable)` returns the first value in `ITERABLE` matching `PREDICATE` or throws
 RangeError if no such value is found.

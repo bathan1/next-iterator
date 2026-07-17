@@ -6,7 +6,7 @@ title: flat
 
 > **flat**\<`T`\>(`iterable`): `Generator`\<`T`, `void`, `unknown`\>
 
-Defined in: iterator/flat.ts:22
+Defined in: [iterator/flat.ts:22](https://github.com/bathan1/utop.js/blob/01fe8ef63ad92516bfa781da53e79a5dab117ba4/src/iterator/flat.ts#L22)
 
 `flat(iterable)` lazily flattens one level of nested `ITERABLE`.
 
