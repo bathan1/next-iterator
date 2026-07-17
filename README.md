@@ -88,7 +88,7 @@ npx shadcn@latest add bathan1/next-iterator/async.chunk.js
 They are written to `@/lib/async-iterator` by default:
 
 ```ts
-import { chunk } from "@/lib/async-iterator/chunk";
+import { chunk } from "@/lib/async-iterator/async.chunk";
 ```
 
 Although `Iterator` and `AsyncIterator` both do not come with these extra methods attached,

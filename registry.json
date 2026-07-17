@@ -366,7 +366,7 @@
         {
           "path": "./src/async-iterator/async.chunk.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/chunk.ts"
+          "target": "@lib/async-iterator/async.chunk.ts"
         }
       ]
     },
@@ -377,7 +377,7 @@
         {
           "path": "./src/async-iterator/async.first.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/first.ts"
+          "target": "@lib/async-iterator/async.first.ts"
         }
       ]
     },
@@ -388,7 +388,7 @@
         {
           "path": "./src/async-iterator/async.findErr.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/findErr.ts"
+          "target": "@lib/async-iterator/async.findErr.ts"
         }
       ]
     },
@@ -399,7 +399,7 @@
         {
           "path": "./src/async-iterator/async.partition.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/partition.ts"
+          "target": "@lib/async-iterator/async.partition.ts"
         }
       ]
     },
@@ -410,12 +410,12 @@
         {
           "path": "./src/async-iterator/async.partitionMap.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/partitionMap.ts"
+          "target": "@lib/async-iterator/async.partitionMap.ts"
         },
         {
-          "path": "./src/async-iterator/types.ts",
+          "path": "./src/iterator/types.ts",
           "type": "registry:lib",
-          "target": "@lib/async-iterator/types.ts"
+          "target": "@lib/iterator/types.ts"
         }
       ]
     }

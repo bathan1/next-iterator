@@ -1,5 +1,5 @@
-import type { Either } from "./types.js";
-export type { Either } from "./types.js";
+import type { Either } from "../iterator/types.js";
+export type { Either } from "../iterator/types.js";
 
 export async function partitionMap<T, L, R>(
   callbackfn: (value: T, index: number) => Either<L, R> | Promise<Either<L, R>>,

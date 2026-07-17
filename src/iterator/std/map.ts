@@ -5,7 +5,7 @@ type BoundMap<T, U> = {
 /**
  * We have to type out `map` explicitly if we want to get nice type inference with `.bind`
  */
-type Map = {
+export type Map = {
   <T, U>(
     callbackfn: (value: T, index: number) => U,
     iterable: Iterable<T>
